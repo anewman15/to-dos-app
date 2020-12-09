@@ -1,0 +1,45 @@
+{
+  "name": "to-dos-app",
+  "version": "1.0.0",
+  "description": "This is a to-dos app created dynamically using JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anewman15/to-dos-app.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "ES6",
+    "Webpack",
+    "Bootstrap"
+  ],
+  "author": "Abdullah Numan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anewman15/to-dos-app/issues"
+  },
+  "homepage": "https://github.com/anewman15/to-dos-app#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "css-loader": "^5.0.1",
+    "eslint": "^7.14.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^2.0.0",
+    "stylelint": "^13.8.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.18.0",
+    "webpack": "^5.9.0",
+    "webpack-cli": "^4.2.0"
+  },
+  "dependencies": {}
+}
