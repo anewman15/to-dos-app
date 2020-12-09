@@ -5,30 +5,36 @@ export class Project {
 		this.title = title;
 	}
 
-	addProjectToList() {
+	addProjectToArray() {
 		myProjects.push(this);
 	}
 }
 
 const createNewProject = () => {
 	const projectTitle = document.getElementById('project-form-title').value;
+	console.log(projectTitle);
 	const newProject = new Project(projectTitle);
-	newProject.addProjectToList();
+	newProject.addProjectToArray();
 };
 
 const displayProjectList = () => {
+	const projectsPanel = document.getElementById('projects-panel');
+	projectsPanel.innerHTML = '';
 	const projectList = document.createElement('ul');
-	projectList.innerHTML = '';
+	projectList.classList.add('list-group', 'rounded-0');
 	myProjects.forEach(project => {
-		projectList.innerHTML = `
-		<li>${project.title}</li>
+		projectList.innerHTML += `
+		<li class="list-group-item">
+			<a class="btn btn-link">${project.title}</a>
+		</li>
 		`;
 	});
+	projectsPanel.appendChild(projectList);
 };
 
 const addDefaultProject = () => {
 	const newProject = new Project('Default Project');
-	newProject.addProjectToList();
+	newProject.addProjectToArray();
 	displayProjectList();
 };
 
@@ -37,4 +43,4 @@ const addNewProject = () => {
 	displayProjectList();
 };
 
-export { addDefaultProject, addNewProject };
+export { myProjects, addDefaultProject, addNewProject };

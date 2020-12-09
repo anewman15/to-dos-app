@@ -8,10 +8,11 @@ createNewProjectButton.addEventListener('click', () => {
 	projectFormWrapper.classList.toggle('d-none');
 });
 
-Project.createDefaultProject();
+Project.addDefaultProject();
+
 projectForm.addEventListener('submit', (e) => {
 	e.preventDefault();
 	Project.addNewProject();
 	projectForm.reset();
-	console.log('Form submitted')
+	projectFormWrapper.classList.add('d-none');
 });
