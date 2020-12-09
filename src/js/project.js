@@ -10,11 +10,6 @@ export class Project {
 	}
 }
 
-const createDefaultProject = () => {
-	const newProject = new Project('Default Project');
-	newProject.addProjectToList();
-};
-
 const createNewProject = () => {
 	const projectTitle = document.getElementById('project-form-title').value;
 	const newProject = new Project(projectTitle);
@@ -26,9 +21,15 @@ const displayProjectList = () => {
 	projectList.innerHTML = '';
 	myProjects.forEach(project => {
 		projectList.innerHTML = `
-			<li>${project.title}</li>
+		<li>${project.title}</li>
 		`;
 	});
+};
+
+const addDefaultProject = () => {
+	const newProject = new Project('Default Project');
+	newProject.addProjectToList();
+	displayProjectList();
 };
 
 const addNewProject = () => {
@@ -36,4 +37,4 @@ const addNewProject = () => {
 	displayProjectList();
 };
 
-export { createDefaultProject, addNewProject };
+export { addDefaultProject, addNewProject };
