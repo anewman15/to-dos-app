@@ -15,4 +15,5 @@ projectForm.addEventListener('submit', (e) => {
 	projectFormWrapper.classList.add('d-none');
 });
 
+
 DomCache.addDefaultProject();

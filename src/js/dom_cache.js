@@ -1,4 +1,5 @@
 import Project from './project';
+import Todo from './todo';
 
 const myProjects = [];
 
@@ -15,15 +16,17 @@ const displayProjectList = () => {
   `;
 	const projectList = document.createElement('ul');
 	projectList.classList.add('list-group');
-	myProjects.forEach(project => {
+	myProjects.forEach((project, index) => {
 		projectList.innerHTML += `
 		<li class="list-group-item">
-			<a class="btn btn-link">${project.getTitle()}</a>
+			<a class="btn btn-link" data-project-idx="${index}">${project.getTitle()}</a>
 		</li>
 		`;
 	});
 	projectsPanel.appendChild(projectList);
 };
+
+
 
 const addDefaultProject = () => {
 	const newProject = new Project('Default Project');
@@ -36,4 +39,4 @@ const addNewProject = () => {
 	displayProjectList();
 };
 
-export { myProjects, addDefaultProject, addNewProject };
+export { addDefaultProject, addNewProject };

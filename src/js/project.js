@@ -1,26 +1,29 @@
 export default class Project {
+	#title;
+	#todos;
+
 	constructor(title) {
-		this.title = title;
-		this.todos = [];
+		this.#title = title;
+		this.#todos = [];
 	}
 
 	addProjectToArray(projectsArray) {
 		projectsArray.push(this);
 	}
 
-	getTitle() {
-		return this.title;
+	get title() {
+		return this.#title;
 	}
 
-	getTodos() {
-		return this.todos;
+	get todos() {
+		return this.#todos;
 	}
 
 	addTodo(newTodo) {
-		this.todos.push(newTodo);
+		this.#todos.push(newTodo);
 	}
 
 	removeTodo(index) {
-		this.todos.splice(index, 1);
+		this.#todos.splice(index, 1);
 	}
 }
