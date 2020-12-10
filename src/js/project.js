@@ -8,11 +8,14 @@ export class Project {
 	addProjectToArray() {
 		myProjects.push(this);
 	}
+
+	getTitle() {
+		return this.title;
+	}
 }
 
 const createNewProject = () => {
 	const projectTitle = document.getElementById('project-form-title').value;
-	console.log(projectTitle);
 	const newProject = new Project(projectTitle);
 	newProject.addProjectToArray();
 };
@@ -21,11 +24,11 @@ const displayProjectList = () => {
 	const projectsPanel = document.getElementById('projects-panel');
 	projectsPanel.innerHTML = '';
 	const projectList = document.createElement('ul');
-	projectList.classList.add('list-group', 'rounded-0');
+	projectList.classList.add('list-group');
 	myProjects.forEach(project => {
 		projectList.innerHTML += `
 		<li class="list-group-item">
-			<a class="btn btn-link">${project.title}</a>
+			<a class="btn btn-link">${project.getTitle()}</a>
 		</li>
 		`;
 	});
