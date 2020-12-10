@@ -46,8 +46,12 @@ class Todo {
 		return this.completedStatus;
 	}
 
-	setCompletedStatus(newCompletedStatus) {
-		this.completedStatus = newCompletedStatus;
+	changeCompletedStatus() {
+		if (this.completedStatus) {
+			this.completedStatus = false;
+		} else {
+			this.completedStatus = true;
+		}
 	}
 
 }
