@@ -1,57 +1,68 @@
-const projectTodos = [];
-
 export default class Todo {
+	#title;
+
+	#dueDate;
+
+	#priority;
+
+	#description;
+
+	#checklist = [];
+
+	#completedStatus = false;
+
 	constructor(title, dueDate, priority, description) {
-		this.title = title;
-		this.dueDate = dueDate;
-		this.priority = priority;
-		this.description = description;
-		this.checklist = [];
-		this.completedStatus = false;
+		this.#title = title;
+		this.#dueDate = dueDate;
+		this.#priority = priority;
+		this.#description = description;
 	}
 
-	addTodoToArray() {
-		projectTodos.push(this);
+	addTodoToArray(todosArray) {
+		todosArray.push(this);
 	}
 
-	getTitle() {
-		return this.title;
+	get title() {
+		return this.#title;
 	}
 
-	setTitle(newTitle) {
-		this.title = newTitle;
+	set title(_value) {
+		this.#title = _value;
 	}
 
-	getDueDate() {
-		return this.dueDate;
+	get dueDate() {
+		return this.#dueDate;
 	}
 
-	getPriority() {
-		return this.priority;
+	get priority() {
+		return this.#priority;
 	}
 
-	setPriority(newPriority) {
-		this.priority = newPriority;
+	set priority(_value) {
+		this.#priority = _value;
 	}
 
-	getChecklist() {
-		return this.checklist;
+	get description() {
+		return this.#description;
 	}
 
-	setChecklist(newChecklist) {
-		this.checklist = newChecklist;
+	get checklist() {
+		return this.#checklist;
 	}
 
-	getCompletedStatus() {
-		return this.completedStatus;
+	set checklist(_value) {
+		this.checklist = _value;
+	}
+
+	get completedStatus() {
+		return this.#completedStatus;
 	}
 
 	changeCompletedStatus() {
-		if (this.completedStatus) {
-			this.completedStatus = false;
+		if (this.#completedStatus) {
+			this.#completedStatus = false;
 		} else {
-			this.completedStatus = true;
+			this.#completedStatus = true;
 		}
 	}
-
 }
