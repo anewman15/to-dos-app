@@ -1,6 +1,6 @@
 const myProjects = [];
 
-export class Project {
+class Project {
 	constructor(title) {
 		this.title = title;
 	}
