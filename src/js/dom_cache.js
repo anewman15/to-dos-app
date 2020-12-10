@@ -1,42 +1,38 @@
 import Project from './project';
 import Todo from './todo';
 
-const myProjects = [];
-
-const createNewProject = () => {
+const createNewProject = (projectsArray) => {
 	const projectTitle = document.getElementById('project-form-title').value;
 	const newProject = new Project(projectTitle);
-	newProject.addProjectToArray(myProjects);
+	newProject.addProjectToArray(projectsArray);
 };
 
-const displayProjectList = () => {
+const displayProjectList = (projectsArray) => {
 	const projectsPanel = document.getElementById('projects-panel');
 	projectsPanel.innerHTML = `
     <h1 class="h3 text-center">Your Projects</h1>
   `;
 	const projectList = document.createElement('ul');
 	projectList.classList.add('list-group');
-	myProjects.forEach((project, index) => {
+	projectsArray.forEach((project, index) => {
 		projectList.innerHTML += `
 		<li class="list-group-item">
-			<a class="btn btn-link" data-project-idx="${index}">${project.getTitle()}</a>
+			<a class="btn btn-link" data-project-idx="${index}">${project.title}</a>
 		</li>
 		`;
 	});
 	projectsPanel.appendChild(projectList);
 };
 
-
-
-const addDefaultProject = () => {
+const addDefaultProject = (projectsArray) => {
 	const newProject = new Project('Default Project');
-	newProject.addProjectToArray(myProjects);
-	displayProjectList();
+	newProject.addProjectToArray(projectsArray);
+	displayProjectList(projectsArray);
 };
 
-const addNewProject = () => {
-	createNewProject();
-	displayProjectList();
+const addNewProject = (projectsArray) => {
+	createNewProject(projectsArray);
+	displayProjectList(projectsArray);
 };
 
 export { addDefaultProject, addNewProject };

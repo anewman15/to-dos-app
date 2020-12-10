@@ -1,5 +1,6 @@
 export default class Project {
-	#title
+	#title;
+
 	#todos;
 
 	constructor(title) {
