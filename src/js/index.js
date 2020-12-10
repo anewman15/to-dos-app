@@ -1,4 +1,4 @@
-import * as Project from './project';
+import * as DomCache from './dom_cache';
 
 const createNewProjectButton = document.getElementById('create-new-project-button');
 const projectFormWrapper = document.getElementById('project-form-wrapper');
@@ -8,11 +8,11 @@ createNewProjectButton.addEventListener('click', () => {
 	projectFormWrapper.classList.toggle('d-none');
 });
 
-Project.addDefaultProject();
-
 projectForm.addEventListener('submit', (e) => {
 	e.preventDefault();
-	Project.addNewProject();
+	DomCache.addNewProject();
 	projectForm.reset();
 	projectFormWrapper.classList.add('d-none');
 });
+
+DomCache.addDefaultProject();

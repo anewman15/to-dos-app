@@ -10,13 +10,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/js/dom_cache.js":
+/*!*****************************!*
+  !*** ./src/js/dom_cache.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"myProjects\": () => /* binding */ myProjects,\n/* harmony export */   \"addDefaultProject\": () => /* binding */ addDefaultProject,\n/* harmony export */   \"addNewProject\": () => /* binding */ addNewProject\n/* harmony export */ });\n/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./project */ \"./src/js/project.js\");\n\n\nconst myProjects = [];\n\nconst createNewProject = () => {\n\tconst projectTitle = document.getElementById('project-form-title').value;\n\tconst newProject = new _project__WEBPACK_IMPORTED_MODULE_0__.default(projectTitle);\n\tnewProject.addProjectToArray(myProjects);\n};\n\nconst displayProjectList = () => {\n\tconst projectsPanel = document.getElementById('projects-panel');\n\tprojectsPanel.innerHTML = `\n    <h1 class=\"h3 text-center\">Your Projects</h1>\n  `;\n\tconst projectList = document.createElement('ul');\n\tprojectList.classList.add('list-group');\n\tmyProjects.forEach(project => {\n\t\tprojectList.innerHTML += `\n\t\t<li class=\"list-group-item\">\n\t\t\t<a class=\"btn btn-link\">${project.getTitle()}</a>\n\t\t</li>\n\t\t`;\n\t});\n\tprojectsPanel.appendChild(projectList);\n};\n\nconst addDefaultProject = () => {\n\tconst newProject = new _project__WEBPACK_IMPORTED_MODULE_0__.default('Default Project');\n\tnewProject.addProjectToArray(myProjects);\n\tdisplayProjectList();\n};\n\nconst addNewProject = () => {\n\tcreateNewProject();\n\tdisplayProjectList();\n};\n\n\n\n//# sourceURL=webpack://to-dos-app/./src/js/dom_cache.js?");
+
+/***/ }),
+
 /***/ "./src/js/index.js":
 /*!*************************!*
   !*** ./src/js/index.js ***!
   \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./project */ \"./src/js/project.js\");\n\n\nconst createNewProjectButton = document.getElementById('create-new-project-button');\nconst projectFormWrapper = document.getElementById('project-form-wrapper');\nconst projectForm = document.getElementById('project-form');\n\ncreateNewProjectButton.addEventListener('click', () => {\n\tprojectFormWrapper.classList.toggle('d-none');\n});\n\n_project__WEBPACK_IMPORTED_MODULE_0__.addDefaultProject();\n\nprojectForm.addEventListener('submit', (e) => {\n\te.preventDefault();\n\t_project__WEBPACK_IMPORTED_MODULE_0__.addNewProject();\n\tprojectForm.reset();\n\tprojectFormWrapper.classList.add('d-none');\n});\n\n\n//# sourceURL=webpack://to-dos-app/./src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _dom_cache__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom_cache */ \"./src/js/dom_cache.js\");\n\n\nconst createNewProjectButton = document.getElementById('create-new-project-button');\nconst projectFormWrapper = document.getElementById('project-form-wrapper');\nconst projectForm = document.getElementById('project-form');\n\ncreateNewProjectButton.addEventListener('click', () => {\n\tprojectFormWrapper.classList.toggle('d-none');\n});\n\nprojectForm.addEventListener('submit', (e) => {\n\te.preventDefault();\n\t_dom_cache__WEBPACK_IMPORTED_MODULE_0__.addNewProject();\n\tprojectForm.reset();\n\tprojectFormWrapper.classList.add('d-none');\n});\n\n_dom_cache__WEBPACK_IMPORTED_MODULE_0__.addDefaultProject();\n\n\n//# sourceURL=webpack://to-dos-app/./src/js/index.js?");
 
 /***/ }),
 
@@ -26,7 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _pro
   \***************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"myProjects\": () => /* binding */ myProjects,\n/* harmony export */   \"addDefaultProject\": () => /* binding */ addDefaultProject,\n/* harmony export */   \"addNewProject\": () => /* binding */ addNewProject\n/* harmony export */ });\nconst myProjects = [];\n\nclass Project {\n\tconstructor(title) {\n\t\tthis.title = title;\n\t}\n\n\taddProjectToArray() {\n\t\tmyProjects.push(this);\n\t}\n\n\tgetTitle() {\n\t\treturn this.title;\n\t}\n}\n\nconst createNewProject = () => {\n\tconst projectTitle = document.getElementById('project-form-title').value;\n\tconst newProject = new Project(projectTitle);\n\tnewProject.addProjectToArray();\n};\n\nconst displayProjectList = () => {\n\tconst projectsPanel = document.getElementById('projects-panel');\n\tprojectsPanel.innerHTML = '';\n\tconst projectList = document.createElement('ul');\n\tprojectList.classList.add('list-group');\n\tmyProjects.forEach(project => {\n\t\tprojectList.innerHTML += `\n\t\t<li class=\"list-group-item\">\n\t\t\t<a class=\"btn btn-link\">${project.getTitle()}</a>\n\t\t</li>\n\t\t`;\n\t});\n\tprojectsPanel.appendChild(projectList);\n};\n\nconst addDefaultProject = () => {\n\tconst newProject = new Project('Default Project');\n\tnewProject.addProjectToArray();\n\tdisplayProjectList();\n};\n\nconst addNewProject = () => {\n\tcreateNewProject();\n\tdisplayProjectList();\n};\n\n\n\n\n//# sourceURL=webpack://to-dos-app/./src/js/project.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => /* binding */ Project\n/* harmony export */ });\nclass Project {\n\tconstructor(title) {\n\t\tthis.title = title;\n\t\tthis.todos = [];\n\t}\n\n\taddProjectToArray(projectsArray) {\n\t\tprojectsArray.push(this);\n\t}\n\n\tgetTitle() {\n\t\treturn this.title;\n\t}\n\n\tgetTodos() {\n\t\treturn this.todos;\n\t}\n\n\taddTodo(newTodo) {\n\t\tthis.todos.push(newTodo);\n\t}\n\n\tremoveTodo(index) {\n\t\tthis.todos.splice(index, 1);\n\t}\n}\n\n//# sourceURL=webpack://to-dos-app/./src/js/project.js?");
 
 /***/ })
 
