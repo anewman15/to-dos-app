@@ -18,8 +18,8 @@ export default class Todo {
 		this.#description = description;
 	}
 
-	addTodoToArray(todosArray) {
-		todosArray.push(this);
+	addTodoToProject(project) {
+		project.addTodo(this);
 	}
 
 	get title() {

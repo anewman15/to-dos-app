@@ -1,5 +1,5 @@
 import Project from './project';
-import { displayProjectContent } from './todo_dom_cache';
+import { displayProjectContent, todoFormEventListener } from './todo_dom_cache';
 
 const myProjects = [];
 
@@ -31,6 +31,7 @@ const projectLinkClickHandler = () => {
 		const projectIndex = e.target.dataset.projectIdx;
 		if (projectIndex) {
 			displayProjectContent(myProjects, projectIndex);
+			todoFormEventListener(myProjects);
 		}
 	});
 };

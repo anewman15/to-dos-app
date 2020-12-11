@@ -35,12 +35,30 @@ const createTodoButtonEventListener = () => {
   createNewTodoButton.addEventListener('click', () => {
     projectFormWrapper.classList.add('d-none');
     todoFormWrapper.classList.toggle('d-none');
-    console.log('Button clicked');
   });
 }
 
-const createNewTodo = () => {
+const createNewTodo = (projectsArray) => {
+  const todoFormTitle = document.getElementById('todo-form-title').value;
+  const todoFormDueDate = document.getElementById('todo-form-due-date').value;
+  const todoFormPriority = document.getElementById('todo-form-priority').value;
+  const todoFormDescription = document.getElementById('todo-form-description').value;
+  const { projectIdx } = document.getElementById('create-new-todo-button').dataset;
 
+  const newTodo = new Todo(todoFormTitle, todoFormDueDate, todoFormPriority, todoFormDescription);
+  newTodo.addTodoToProject(projectsArray[projectIdx]);
+}
+
+const todoFormEventListener = (projectsArray) => {
+  const todoFormWrapper = document.getElementById('todo-form-wrapper');
+  const todoForm = document.getElementById('todo-form');
+  todoForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    createNewTodo(projectsArray);
+    console.log('Submitted');
+    todoForm.reset();
+    todoFormWrapper.classList.add('d-none');
+  });
 }
 
 const displayProjectContent = (projectsArray, projectIndex) => {
@@ -49,4 +67,4 @@ const displayProjectContent = (projectsArray, projectIndex) => {
   createTodoButtonEventListener();
 }
 
-export { displayProjectContent };
+export { displayProjectContent, todoFormEventListener };
