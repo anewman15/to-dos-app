@@ -50,3 +50,5 @@ const addNewProject = () => {
 };
 
 export { addDefaultProject, addNewProject, projectLinkClickHandler };
+
+console.log(myProjects);

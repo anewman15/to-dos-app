@@ -61,10 +61,16 @@ const todoFormEventListener = (projectsArray) => {
   });
 }
 
+const createDefaultTodo = (projectsArray) => {
+  const todoFormDescription = 'Create a New Todo under Default Project or Create a New Project and add a Todo there'
+  const defaultTodo = new Todo('Default Todo', 'Now', 'Immediate', todoFormDescription);
+  defaultTodo.addTodoToProject(projectsArray[0]);
+}
+
 const displayProjectContent = (projectsArray, projectIndex) => {
   resetProjectContentContainer();
   updateProjectContentContainer(projectsArray, projectIndex);
   createTodoButtonEventListener();
 }
 
-export { displayProjectContent, todoFormEventListener };
+export { displayProjectContent, todoFormEventListener, createDefaultTodo };

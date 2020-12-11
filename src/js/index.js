@@ -16,6 +16,7 @@ projectForm.addEventListener('submit', (e) => {
 	ProjectDomCache.addNewProject();
 	projectForm.reset();
 	projectFormWrapper.classList.add('d-none');
+	console.log('Form submitted');
 });
 
 ProjectDomCache.addDefaultProject();
