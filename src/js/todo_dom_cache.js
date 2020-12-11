@@ -9,7 +9,7 @@ const resetProjectContentContainer = () => {
     const contentArea = document.getElementById('content-area');
     const projectContentContainer = document.createElement('div');
     projectContentContainer.id = 'project-content-container';
-    projectContentContainer.classList = 'col-8 p-3 bg-light my-4 text-center';
+    projectContentContainer.classList = 'col p-3 bg-light my-4 text-center';
     contentArea.appendChild(projectContentContainer);
   }
 }

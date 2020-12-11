@@ -12,7 +12,7 @@ const createNewProject = () => {
 const displayProjectList = () => {
 	const projectsPanel = document.getElementById('projects-panel');
 	projectsPanel.innerHTML = `
-    <h1 class="h3 text-center">Your Projects</h1>
+    <h1 class="h3 mb-3 text-center">Your Projects</h1>
   `;
 	const projectList = document.createElement('ul');
 	projectList.classList.add('list-group');
