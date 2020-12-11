@@ -29,10 +29,12 @@ const updateProjectContentContainer = (projectsArray, projectIndex) => {
 }
 
 const createTodoButtonEventListener = () => {
-  const todoFormWarpper = document.getElementById('todo-form-wrapper')
+  const todoFormWrapper = document.getElementById('todo-form-wrapper');
+  const projectFormWrapper = document.getElementById('project-form-wrapper');
   const createNewTodoButton = document.getElementById('create-new-todo-button');
   createNewTodoButton.addEventListener('click', () => {
-    todoFormWarpper.classList.toggle('d-none');
+    projectFormWrapper.classList.add('d-none');
+    todoFormWrapper.classList.toggle('d-none');
     console.log('Button clicked');
   });
 }
