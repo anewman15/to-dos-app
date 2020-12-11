@@ -1,22 +1,34 @@
 import Project from './project';
 import Todo from './todo';
 
-const updateProjectContainer = (projectsArray, projectIndex) => {
-  const projectContentWrapper = document.getElementById('project-content-wrapper');
-  projectContentWrapper.innerHTML = '';
-  const projectContentContainer = document.createElement('div');
-  projectContentContainer.id = 'project.content-container';
-  projectContentContainer.classList.add('mx-auto');
-  projectContentContainer.innerHTML = `
+const resetProjectContentContainer = () => {
+  const projectContentContainer = document.getElementById('project-content-container');
+  if (projectContentContainer) {
+    projectContentContainer.innerHTML = '';
+  } else {
+    const contentArea = document.getElementById('content-area');
+    const projectContentContainer = document.createElement('div');
+    projectContentContainer.id = 'project-content-container';
+    projectContentContainer.classList = 'col-8 p-3 bg-light my-4 text-center';
+    contentArea.appendChild(projectContentContainer);
+  }
+}
+
+const updateProjectContentContainer = (projectsArray, projectIndex) => {
+  const projectContentContainer = document.getElementById('project-content-container');
+  const projectContent = document.createElement('div');
+  projectContent.id = 'project-content';
+  projectContent.classList.add('mx-auto');
+  projectContent.innerHTML = `
     <div id="project-content-top" class="mx-auto">
       <h1 class="h3 my-3 text-center">${projectsArray[projectIndex].title}</h1>
       <button id="create-new-todo-button" class="btn btn-primary my-3" data-project-idx="${projectIndex}">Create New Todo</button>
     </div>
   `;
-  projectContentWrapper.appendChild(projectContentContainer);
+  projectContentContainer.appendChild(projectContent);
 }
 
-const displayCreateNewTodoButton = (projectsArray, projectIndex) => {
+const displayCreateTodoForm = (projectsArray, projectIndex) => {
   const projectContentContainer = document.getElementById('project-content-container');
 
   projectContentContainer += `
@@ -28,7 +40,8 @@ const createNewTodo = () => {
 }
 
 const displayProjectContent = (projectsArray, projectIndex) => {
-  updateProjectContainer(projectsArray, projectIndex);
+  resetProjectContentContainer();
+  updateProjectContentContainer(projectsArray, projectIndex);
 }
 
 export { displayProjectContent };
