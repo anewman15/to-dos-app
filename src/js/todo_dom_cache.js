@@ -28,11 +28,13 @@ const updateProjectContentContainer = (projectsArray, projectIndex) => {
   projectContentContainer.appendChild(projectContent);
 }
 
-const displayCreateTodoForm = (projectsArray, projectIndex) => {
-  const projectContentContainer = document.getElementById('project-content-container');
-
-  projectContentContainer += `
-  `;
+const createTodoButtonEventListener = () => {
+  const todoFormWarpper = document.getElementById('todo-form-wrapper')
+  const createNewTodoButton = document.getElementById('create-new-todo-button');
+  createNewTodoButton.addEventListener('click', () => {
+    todoFormWarpper.classList.toggle('d-none');
+    console.log('Button clicked');
+  });
 }
 
 const createNewTodo = () => {
@@ -42,6 +44,7 @@ const createNewTodo = () => {
 const displayProjectContent = (projectsArray, projectIndex) => {
   resetProjectContentContainer();
   updateProjectContentContainer(projectsArray, projectIndex);
+  createTodoButtonEventListener();
 }
 
 export { displayProjectContent };
