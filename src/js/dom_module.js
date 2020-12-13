@@ -1,5 +1,44 @@
-import Project from './project';
-import Todo from './todo';
+import Project from './Project';
+import Todo from './Todo';
+
+const myProjects = [];
+
+const createNewProject = () => {
+	const projectTitle = document.getElementById('project-form-title').value;
+	const newProject = new Project(projectTitle);
+	newProject.addProjectToArray(myProjects);
+};
+
+const displayProjectList = () => {
+	const projectsPanel = document.getElementById('projects-panel');
+	projectsPanel.innerHTML = `
+    <h1 class="h3 mb-3 text-center">Your Projects</h1>
+  `;
+	const projectList = document.createElement('ul');
+	projectList.classList.add('list-group');
+	myProjects.forEach((project, index) => {
+		projectList.innerHTML += `
+		<li class="list-group-item">
+			<a class="project-link btn btn-link" data-project-idx="${index}">${project.title}</a>
+		</li>
+		`;
+	});
+	projectsPanel.appendChild(projectList);
+};
+
+const addDefaultProject = () => {
+	const newProject = new Project('Default Project');
+	newProject.addProjectToArray(myProjects);
+	displayProjectList();
+	createDefaultTodo(myProjects);
+	projectLinkClickHandler();
+};
+
+const addNewProject = () => {
+	createNewProject();
+	displayProjectList();
+	projectLinkClickHandler();
+};
 
 const resetProjectContentContainer = () => {
   const projectContentContainer = document.getElementById('project-content-container');
@@ -28,15 +67,6 @@ const updateProjectContentContainer = (projectsArray, projectIndex) => {
   projectContentContainer.appendChild(projectContent);
 }
 
-const createTodoButtonEventListener = () => {
-  const todoFormWrapper = document.getElementById('todo-form-wrapper');
-  const projectFormWrapper = document.getElementById('project-form-wrapper');
-  const createNewTodoButton = document.getElementById('create-new-todo-button');
-  createNewTodoButton.addEventListener('click', () => {
-    projectFormWrapper.classList.add('d-none');
-    todoFormWrapper.classList.toggle('d-none');
-  });
-}
 
 const createNewTodo = (projectsArray) => {
   const todoFormTitle = document.getElementById('todo-form-title').value;
@@ -47,18 +77,6 @@ const createNewTodo = (projectsArray) => {
 
   const newTodo = new Todo(todoFormTitle, todoFormDueDate, todoFormPriority, todoFormDescription);
   newTodo.addTodoToProject(projectsArray[projectIdx]);
-}
-
-const todoFormEventListener = (projectsArray) => {
-  const todoFormWrapper = document.getElementById('todo-form-wrapper');
-  const todoForm = document.getElementById('todo-form');
-  todoForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    createNewTodo(projectsArray);
-    console.log('Submitted');
-    todoForm.reset();
-    todoFormWrapper.classList.add('d-none');
-  });
 }
 
 const createDefaultTodo = (projectsArray) => {
@@ -73,4 +91,6 @@ const displayProjectContent = (projectsArray, projectIndex) => {
   createTodoButtonEventListener();
 }
 
-export { displayProjectContent, todoFormEventListener, createDefaultTodo };
+export { addDefaultProject, addNewProject, projectLinkClickHandler };
+
+console.log(myProjects);
