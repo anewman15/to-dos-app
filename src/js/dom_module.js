@@ -89,7 +89,3 @@ const displayProjectContent = (projectsArray, projectIndex) => {
   updateProjectContentContainer(projectsArray, projectIndex);
   createTodoButtonEventListener();
 }
-
-export { addDefaultProject, addNewProject, projectLinkClickHandler };
-
-console.log(myProjects);
