@@ -1,3 +1,7 @@
+import * as Storage from './storage';
+
+Storage.initiateProjectsStore();
+
 export default class Project {
 	#title;
 
@@ -8,8 +12,8 @@ export default class Project {
 		this.#todos = [];
 	}
 
-	addProjectToArray(projectsArray) {
-		projectsArray.push(this);
+	addProjectToStorage() {
+		Storage.addProject(this);
 	}
 
 	get title() {

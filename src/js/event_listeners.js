@@ -1,7 +1,6 @@
-import Project from './project';
-import Todo from './todo';
+import * as DomModule from './dom_module';
 
-const createNewProjectButtonEventHandler = () => {
+const createNewProjectButtonEventListener = () => {
 	const createNewProjectButton = document.getElementById('create-new-project-button');
 	createNewProjectButton.addEventListener('click', () => {
 		const projectFormWrapper = document.getElementById('project-form-wrapper');
@@ -11,19 +10,19 @@ const createNewProjectButtonEventHandler = () => {
 	});
 }
 
-const projectFormEventListener = () => {
+const projectFormEventListener = (projectsArray) => {
 	const projectForm = document.getElementById('project-form');
 	const projectFormWrapper = document.getElementById('project-form-wrapper');
 	projectForm.addEventListener('submit', (e) => {
 		e.preventDefault();
-		ProjectDomCache.addNewProject();
+		DomModule.addNewProject(projectsArray);
 		projectForm.reset();
 		projectFormWrapper.classList.add('d-none');
 		console.log('Form submitted');
 	});
 }
 
-const projectLinkClickListener = () => {
+const projectLinkEventListener = (projectsArray) => {
 	document.addEventListener('click', (e) => {
 		const projectIndex = e.target.dataset.projectIdx;
 		if (projectIndex) {
@@ -56,5 +55,10 @@ const todoFormEventListener = (projectsArray) => {
   });
 }
 
-
-export { displayProjectContent, todoFormEventListener, createDefaultTodo };
+export {
+	createNewProjectButtonEventListener,
+	projectFormEventListener,
+	projectLinkEventListener,
+	createTodoButtonEventListener,
+	todoFormEventListener,
+};

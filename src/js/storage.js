@@ -8,10 +8,10 @@ const getProjects = () => {
   return projects;
 }
 
-const updateProjectsStore = (newProject) => {
+const addProject = (newProject) => {
   const projects = getProjects();
   projects.push(newProject);
   localStorage.setItem('projects', JSON.stringify(projects));
 }
 
-export { initiateProjectsStore, getProjects, updateProjectsStore };
+export { initiateProjectsStore, getProjects, addProject };
