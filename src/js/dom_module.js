@@ -67,7 +67,6 @@ const updateProjectContentContainer = (projectsArray, projectIndex) => {
   projectContentContainer.appendChild(projectContent);
 }
 
-
 const createNewTodo = (projectsArray) => {
   const todoFormTitle = document.getElementById('todo-form-title').value;
   const todoFormDueDate = document.getElementById('todo-form-due-date').value;
