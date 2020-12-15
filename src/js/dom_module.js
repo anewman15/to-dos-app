@@ -27,7 +27,7 @@ const displayProjectList = () => {
 };
 
 export const addDefaultProject = () => {
-  const newProject = new Project('Default Project');
+  const newProject = new Project('Fire is Calling Youu...');
 	newProject.addProjectToStorage();
 	displayProjectList();
 };

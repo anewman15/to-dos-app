@@ -11,7 +11,6 @@ export default class Project {
 
 	addProjectToStorage() {
 		Storage.addProject(this);
-		console.log(this);
 	}
 
 	get title() {

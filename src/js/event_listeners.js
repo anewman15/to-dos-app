@@ -8,9 +8,9 @@ const createNewProjectButtonEventListener = () => {
 		todoFormWrapper.classList.add('d-none');
 		projectFormWrapper.classList.toggle('d-none');
 	});
-}
+};
 
-const projectFormEventListener = (projectsArray) => {
+const projectFormEventListener = () => {
 	const projectForm = document.getElementById('project-form');
 	const projectFormWrapper = document.getElementById('project-form-wrapper');
 	projectForm.addEventListener('submit', (e) => {
@@ -18,17 +18,19 @@ const projectFormEventListener = (projectsArray) => {
 		DomModule.addNewProject();
 		projectForm.reset();
 		projectFormWrapper.classList.add('d-none');
-		console.log('Form submitted');
 	});
-}
+};
 
-const projectLinkEventListener = (projectsArray) => {
-	document.addEventListener('click', (e) => {
-		const projectIndex = e.target.dataset.projectIdx;
-		if (projectIndex) {
-			displayProjectContent(myProjects, projectIndex);
-			todoFormEventListener(myProjects);
-		}
+const projectLinkEventListener = () => {
+	const projectLinks = document.querySelectorAll('.project-link');
+	projectLinks.forEach((link) => {
+		link.addEventListener('click', (e) => {
+			const projectIndex = e.target.dataset.projectIdx;
+			if (projectIndex) {
+				displayProjectContent(myProjects, projectIndex);
+				todoFormEventListener(myProjects);
+			}
+		});
 	});
 };
 
