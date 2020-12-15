@@ -8,7 +8,7 @@ const createNewProject = () => {
 	newProject.addProjectToStorage();
 };
 
-const displayProjectList = () => {
+export const displayProjectList = () => {
   const projectsArray = Storage.getProjects();
 	const projectsPanel = document.getElementById('projects-panel');
 	projectsPanel.innerHTML = `

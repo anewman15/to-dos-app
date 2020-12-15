@@ -4,7 +4,7 @@ import * as Storage from './storage';
 
 Storage.initiateProjectsStore();
 
-DomModule.addDefaultProject();
+DomModule.displayProjectList();
 EventListeners.createNewProjectButtonEventListener();
 EventListeners.projectFormEventListener();
 EventListeners.projectLinkEventListener();

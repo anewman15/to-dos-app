@@ -1,6 +1,10 @@
 const initiateProjectsStore = () => {
-  const projectsArray = [];
+  if (localStorage.projects) {
+    return;
+  } else {
+  const projectsArray = [{title: 'Fire is Calling You...', todos: []}];
   localStorage.setItem('projects', JSON.stringify(projectsArray));
+  }
 }
 
 const getProjects = () => {
