@@ -4,7 +4,7 @@ import * as Storage from './storage';
 
 const createNewProject = () => {
 	const projectTitle = document.getElementById('project-form-title').value;
-	const newProject = new Project(projectTitle);
+  const newProject = new Project(projectTitle);
 	newProject.addProjectToStorage();
 };
 
@@ -27,7 +27,7 @@ const displayProjectList = () => {
 };
 
 export const addDefaultProject = () => {
-	const newProject = new Project('Default Project');
+  const newProject = new Project('Default Project');
 	newProject.addProjectToStorage();
 	displayProjectList();
 };

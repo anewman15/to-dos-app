@@ -9,9 +9,10 @@ const getProjects = () => {
 }
 
 const addProject = (newProject) => {
-  const projects = getProjects();
-  projects.push(newProject);
-  localStorage.setItem('projects', JSON.stringify(projects));
+  const storedProjects = getProjects();
+  storedProjects.push({title: newProject.title, todos: newProject.todos});
+  const updatedStoredProjects = JSON.stringify(storedProjects);
+  localStorage.setItem('projects', updatedStoredProjects);
 }
 
 export { initiateProjectsStore, getProjects, addProject };

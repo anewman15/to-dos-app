@@ -15,7 +15,7 @@ const projectFormEventListener = (projectsArray) => {
 	const projectFormWrapper = document.getElementById('project-form-wrapper');
 	projectForm.addEventListener('submit', (e) => {
 		e.preventDefault();
-		DomModule.addNewProject(projectsArray);
+		DomModule.addNewProject();
 		projectForm.reset();
 		projectFormWrapper.classList.add('d-none');
 		console.log('Form submitted');

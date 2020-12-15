@@ -1,7 +1,4 @@
 import * as Storage from './storage';
-
-Storage.initiateProjectsStore();
-
 export default class Project {
 	#title;
 
@@ -14,6 +11,7 @@ export default class Project {
 
 	addProjectToStorage() {
 		Storage.addProject(this);
+		console.log(this);
 	}
 
 	get title() {
