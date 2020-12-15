@@ -51,7 +51,7 @@ const todoFormEventListener = () => {
   const todoForm = document.getElementById('todo-form');
   todoForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    DomModule.createNewTodo();
+    DomModule.addTodoListToProject();
     console.log('Submitted');
     todoForm.reset();
     todoFormWrapper.classList.add('d-none');

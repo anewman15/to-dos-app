@@ -25,7 +25,8 @@ const addTodo = (newTodo, projectIndex) => {
 		title: newTodo.title,
 		dueDate: newTodo.dueDate,
 		priority: newTodo.priority,
-		description: newTodo.description
+		description: newTodo.description,
+		completedStatus: newTodo.completedStatus
 	};
 	storedProjects[projectIndex].todos.push(todoLiteral);
 	const updatedStoredProjects = JSON.stringify(storedProjects);
