@@ -7,3 +7,5 @@ Storage.initiateProjectsStore();
 DomModule.addDefaultProject();
 EventListeners.createNewProjectButtonEventListener();
 EventListeners.projectFormEventListener();
+EventListeners.projectLinkEventListener();
+EventListeners.todoFormEventListener();

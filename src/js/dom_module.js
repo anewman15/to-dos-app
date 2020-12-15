@@ -19,7 +19,7 @@ const displayProjectList = () => {
 	projectsArray.forEach((project, index) => {
 		projectList.innerHTML += `
 		<li class="list-group-item">
-			<a class="project-link btn btn-link" data-project-idx="${index}">${project.title}</a>
+			<a class="project-link btn btn-link text-left" data-project-idx="${index}">${project.title}</a>
 		</li>
 		`;
 	});
@@ -27,7 +27,7 @@ const displayProjectList = () => {
 };
 
 export const addDefaultProject = () => {
-  const newProject = new Project('Fire is Calling Youu...');
+  const newProject = new Project('Fire is Calling You...');
 	newProject.addProjectToStorage();
 	displayProjectList();
 };
@@ -53,7 +53,7 @@ const resetProjectContentContainer = () => {
 const updateProjectContentContainer = (projectsArray, projectIndex) => {
   const projectContentContainer = document.getElementById('project-content-container');
   const projectContent = document.createElement('div');
-  projectContent.id = 'project-content';
+  projectContent.id = `project-${projectIndex + 1}-content`;
   projectContent.classList.add('mx-auto');
   projectContent.innerHTML = `
     <div id="project-content-top" class="mx-auto">
@@ -64,15 +64,16 @@ const updateProjectContentContainer = (projectsArray, projectIndex) => {
   projectContentContainer.appendChild(projectContent);
 }
 
-const createNewTodo = (projectsArray) => {
+export const createNewTodo = () => {
   const todoFormTitle = document.getElementById('todo-form-title').value;
   const todoFormDueDate = document.getElementById('todo-form-due-date').value;
   const todoFormPriority = document.getElementById('todo-form-priority').value;
   const todoFormDescription = document.getElementById('todo-form-description').value;
   const { projectIdx } = document.getElementById('create-new-todo-button').dataset;
-
+  const projectsArray = Storage.getProjects();
   const newTodo = new Todo(todoFormTitle, todoFormDueDate, todoFormPriority, todoFormDescription);
-  newTodo.addTodoToProject(projectsArray[projectIdx]);
+  // newTodo.addTodoToProject(projectsArray[projectIdx]);
+  console.log(newTodo.title);
 }
 
 const createDefaultTodo = (projectsArray) => {
@@ -81,7 +82,7 @@ const createDefaultTodo = (projectsArray) => {
   defaultTodo.addTodoToProject(projectsArray[0]);
 }
 
-const displayProjectContent = (projectsArray, projectIndex) => {
+export const displayProjectContent = (projectsArray, projectIndex) => {
   resetProjectContentContainer();
   updateProjectContentContainer(projectsArray, projectIndex);
 }
