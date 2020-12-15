@@ -21,10 +21,6 @@ export default class Project {
 		return this.#todos;
 	}
 
-	addTodo(newTodo) {
-		this.#todos.push(newTodo);
-	}
-
 	removeTodo(index) {
 		this.#todos.splice(index, 1);
 	}

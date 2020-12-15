@@ -45,7 +45,7 @@ const resetProjectContentContainer = () => {
     const contentArea = document.getElementById('content-area');
     const projectContentContainer = document.createElement('div');
     projectContentContainer.id = 'project-content-container';
-    projectContentContainer.classList = 'col p-3 bg-light my-4 text-center';
+    projectContentContainer.classList = 'col-md p-3 bg-light my-4 text-center';
     contentArea.appendChild(projectContentContainer);
   }
 }
@@ -53,7 +53,7 @@ const resetProjectContentContainer = () => {
 const updateProjectContentContainer = (projectsArray, projectIndex) => {
   const projectContentContainer = document.getElementById('project-content-container');
   const projectContent = document.createElement('div');
-  projectContent.id = `project-${projectIndex + 1}-content`;
+  projectContent.id = `project-content`;
   projectContent.classList.add('mx-auto');
   projectContent.innerHTML = `
     <div id="project-content-top" class="mx-auto">
@@ -64,15 +64,13 @@ const updateProjectContentContainer = (projectsArray, projectIndex) => {
   projectContentContainer.appendChild(projectContent);
 }
 
-export const createNewTodo = () => {
+export const createNewTodo = (projectIndex) => {
   const todoFormTitle = document.getElementById('todo-form-title').value;
   const todoFormDueDate = document.getElementById('todo-form-due-date').value;
   const todoFormPriority = document.getElementById('todo-form-priority').value;
   const todoFormDescription = document.getElementById('todo-form-description').value;
-  const { projectIdx } = document.getElementById('create-new-todo-button').dataset;
-  const projectsArray = Storage.getProjects();
   const newTodo = new Todo(todoFormTitle, todoFormDueDate, todoFormPriority, todoFormDescription);
-  // newTodo.addTodoToProject(projectsArray[projectIdx]);
+  newTodo.addTodoToProject(projectIndex);
   console.log(newTodo.title);
 }
 
@@ -80,6 +78,46 @@ const createDefaultTodo = (projectsArray) => {
   const todoFormDescription = 'Create a New Todo under Default Project or Create a New Project and add a Todo there'
   const defaultTodo = new Todo('Default Todo', 'Now', 'Immediate', todoFormDescription);
   defaultTodo.addTodoToProject(projectsArray[0]);
+}
+
+const displayProjectTodoList = (projectsArray, projectIndex) => {
+  const projectContent = document.getElementById('project-content');
+  const projectTodosContainer = document.createElement('div');
+  projectTodosContainer.id = 'project-todos-container';
+  projectTodosContainer.classList.add('container col row mx-auto');
+  projectTodosContainer.innerHTML += `
+  <div class="col bg-info mx-auto my-4 p-3">
+  <div class="todo-info-top">
+    <div class="px-1">
+      <p id="todo-title">Todo Title</p>
+    </div>
+    <div class="d-flex justify-content-between">
+      <div class="px-1">
+        <p><span>Priority:</span><span id="todo-priority" class="ml-2">Immediate</span></p>
+      </div>
+      <div class="p-1">
+        <p><span>Due:</span><span id="todo-due" class="ml-2">Date and Time</span></p>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between">
+      <p class="px-1">Description:</p>
+      <div class="px-1">
+        <p><span>Status:</span><span id="todo-status" class="ml-2">Not Completed</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="px-1">
+    <p id="todo-description">
+      Dummy Description
+    </p>
+  </div>
+</div>
+  `;
+}
+
+const addTodoListToProject = () => {
+  const projectsArray = Storage.getProjects();
+  const { projectIdx } = document.getElementById('create-new-todo-button').dataset;
 }
 
 export const displayProjectContent = (projectsArray, projectIndex) => {

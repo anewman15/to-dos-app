@@ -1,3 +1,5 @@
+import * as Storage from './storage';
+
 export default class Todo {
 	#title;
 
@@ -18,8 +20,8 @@ export default class Todo {
 		this.#description = description;
 	}
 
-	addTodoToProject(project) {
-		project.addTodo(this);
+	addTodoToProject(projectIndex) {
+		Storage.addTodo(this, projectIndex);
 	}
 
 	get title() {
