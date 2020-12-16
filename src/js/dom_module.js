@@ -98,18 +98,18 @@ const displayProjectTodoList = () => {
 					<div class="todo-info">
 						<div class="d-flex justify-content-between">
 							<div class="px-1">
-								<p class="my-1"><span class="font-weight-bold">Status:</span><span id="todo-status" class="ml-2">${todo.completedStatus}</span></p>
+								<p class="my-1 text-left"><span class="font-weight-bold">Status:</span><span id="todo-status" class="ml-2">${todo.status}</span></p>
 							</div>
 							<div class="px-1">
-								<p class="my-1"><span class="font-weight-bold">Priority:</span><span id="todo-priority" class="ml-2">${todo.priority}</span></p>
+								<p class="my-1 text-right"><span class="font-weight-bold">Priority:</span><span id="todo-priority" class="ml-2">${todo.priority}</span></p>
 							</div>
 						</div>
 						<div class="d-flex justify-content-between">
 							<div class="px-1">
-								<p class="m-0"><span class="font-weight-bold">Due:</span><span id="todo-due" class="ml-2">${todo.dueDate}</span></p>
+								<p class="m-0 text-left"><span class="font-weight-bold">Due:</span><span id="todo-due" class="ml-2">${todo.dueDate}</span></p>
 							</div>
 							<div class="px-1">
-								<p class="m-0"><span class="font-weight-bold">Time Left:</span><span id="time-left" class="ml-2">${todo.dueDate}</span></p>
+								<p class="m-0 text-right"><span class="font-weight-bold">Time Left:</span><span id="time-left" class="ml-2">${todo.dueDate}</span></p>
 							</div>
 						</div>
 					</div>
