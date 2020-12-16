@@ -97,7 +97,7 @@ const displayProjectTodoList = () => {
 	`;
 	const projectTodos = projectsArray[projectIdx].todos;
 	if (projectTodos) {
-		projectTodos.forEach(todo => {
+		projectTodos.forEach((todo, index) => {
 			projectTodosList.innerHTML += `
 			<div class="row mx-auto text-white">
 				<div class="col bg-info mx-auto my-4 p-3 rounded">
@@ -108,25 +108,39 @@ const displayProjectTodoList = () => {
 					<div class="todo-info">
 						<div class="d-flex justify-content-between">
 							<div class="px-1">
-								<p class="my-1"><span>Priority:</span><span id="todo-priority" class="ml-2">${todo.priority}</span></p>
+								<p class="my-1"><span class="font-weight-bold">Status:</span><span id="todo-status" class="ml-2">${todo.completedStatus}</span></p>
 							</div>
 							<div class="px-1">
-								<p class="m-0"><span>Due:</span><span id="todo-due" class="ml-2">${todo.dueDate}</span></p>
+								<p class="my-1"><span class="font-weight-bold">Priority:</span><span id="todo-priority" class="ml-2">${todo.priority}</span></p>
 							</div>
 						</div>
 						<div class="d-flex justify-content-between">
 							<div class="px-1">
-								<p class="my-1"><span>Status:</span><span id="todo-status" class="ml-2">${todo.completedStatus}</span></p>
+								<p class="m-0"><span class="font-weight-bold">Due:</span><span id="todo-due" class="ml-2">${todo.dueDate}</span></p>
+							</div>
+							<div class="px-1">
+								<p class="m-0"><span class="font-weight-bold">Time Left:</span><span id="time-left" class="ml-2">${todo.dueDate}</span></p>
 							</div>
 						</div>
 					</div>
 					<hr class="p-0 mt-0 mb-1">
 					<div class="px-1 mt-3 text-left">
-						<p class="p-0 my-1">Description:</p>
+						<p class="p-0 my-1 font-weight-bold">Description:</p>
 						<p id="todo-description" class="p-0 my-1">
 							${todo.description}
 						</p>
 					</div>
+					<hr>
+					<div class="text-left d-flex justify-content-between">
+						<button id="edit-todo-button" class="btn btn-warning my-3" data-project-idx="${index}"
+							data-toggle="modal" data-target="#editTodoModal">
+							Edit Todo
+						</button>
+						<button id="delete-todo-button" class="btn btn-danger my-3" data-project-idx="${index}"
+							data-toggle="modal" data-target="#createTodoModal">
+							Delete Todo
+						</button>
+				</div>
 				</div>
 			</div>
 			`;
