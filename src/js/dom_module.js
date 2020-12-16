@@ -132,11 +132,11 @@ const displayProjectTodoList = () => {
 					</div>
 					<hr>
 					<div class="text-left d-flex justify-content-between">
-						<button id="edit-todo-button" class="btn btn-warning my-3" data-project-idx="${index}"
+						<button id="edit-todo-button" class="btn btn-warning my-3 font-weight-bold" data-project-idx="${index}"
 							data-toggle="modal" data-target="#editTodoModal">
 							Edit Todo
 						</button>
-						<button id="delete-todo-button" class="btn btn-danger my-3" data-project-idx="${index}"
+						<button id="delete-todo-button" class="btn btn-danger my-3 font-weight-bold" data-project-idx="${index}"
 							data-toggle="modal" data-target="#createTodoModal">
 							Delete Todo
 						</button>
