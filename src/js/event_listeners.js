@@ -31,7 +31,7 @@ const projectLinkEventListener = () => {
 	});
 };
 
-const todoFormEventListener = () => {
+const todoCreateEventListener = () => {
   const todoCreateForm = document.getElementById('todo-create');
   todoCreateForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -45,5 +45,5 @@ export {
 	projectFormEventListener,
 	projectLinkEventListener,
 	createTodoButtonEventListener,
-	todoFormEventListener,
+	todoCreateEventListener,
 };
