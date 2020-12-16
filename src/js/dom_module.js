@@ -91,11 +91,11 @@ const displayProjectTodoList = () => {
 	projectTodosList.classList.add('container', 'col', 'mx-auto', 'mt-5');
 	const projectsArray = Storage.getProjects();
 	const { projectIdx } = document.getElementById('create-new-todo-button').dataset;
+	const projectTodos = projectsArray[projectIdx].todos;
 	projectTodosList.innerHTML = `
-		<h1 class="h3 m-0 text-center">Todos:</h1>
+		<h1 class="h3 m-0 text-center">You have ${projectTodos.length} Todos</h1>
 		<hr class="p-0">
 	`;
-	const projectTodos = projectsArray[projectIdx].todos;
 	if (projectTodos) {
 		projectTodos.forEach((todo, index) => {
 			projectTodosList.innerHTML += `
