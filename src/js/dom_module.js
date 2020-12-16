@@ -57,7 +57,7 @@ const updateProjectContentContainer = (projectsArray, projectIndex) => {
 	projectContent.classList.add('mx-auto');
 	projectContent.innerHTML = `
     <div id="project-content-top" class="mx-auto">
-      <h1 class="h3 my-3 text-center">${projectsArray[projectIndex].title}</h1>
+      <h1 class="h2 font-weight-bold my-3 text-center">${projectsArray[projectIndex].title}</h1>
       <button id="create-new-todo-button" class="btn btn-primary my-3" data-project-idx="${projectIndex}">Create New Todo</button>
     </div>
   `;
@@ -85,38 +85,45 @@ const displayProjectTodoList = () => {
 	const projectContent = document.getElementById('project-content');
 	const projectTodosContainer = document.createElement('div');
 	projectTodosContainer.id = 'project-todos-container';
-	projectTodosContainer.classList.add('container', 'col', 'mx-auto');
+	projectTodosContainer.classList.add('container', 'col', 'mx-auto', 'mt-5');
 	const projectsArray = Storage.getProjects();
 	const { projectIdx } = document.getElementById('create-new-todo-button').dataset;
+	projectTodosContainer.innerHTML = `
+		<h1 class="h3 m-0 text-center">Todos:</h1>
+		<hr class="p-0">
+	`;
 	const projectTodos = projectsArray[projectIdx].todos;
 	if (projectTodos) {
 		projectTodos.forEach(todo => {
 			projectTodosContainer.innerHTML += `
-			<div class="row mx-auto">
-				<div class="col bg-info mx-auto my-4 p-3">
-				<div class="todo-info-top">
+			<div class="row mx-auto text-white">
+				<div class="col bg-info mx-auto my-4 p-3 rounded">
 					<div class="px-1">
-						<p id="todo-title">${todo.title}</p>
+						<h1 id="todo-title" class="h3 font-weight-bold">${todo.title}</h1>
 					</div>
-					<div class="d-flex justify-content-between">
-						<div class="px-1">
-							<p><span>Priority:</span><span id="todo-priority" class="ml-2">${todo.priority}</span></p>
+					<hr class="p-0 mt-0 mb-1">
+					<div class="todo-info">
+						<div class="d-flex justify-content-between">
+							<div class="px-1">
+								<p class="my-1"><span>Priority:</span><span id="todo-priority" class="ml-2">${todo.priority}</span></p>
+							</div>
+							<div class="px-1">
+								<p class="m-0"><span>Due:</span><span id="todo-due" class="ml-2">${todo.dueDate}</span></p>
+							</div>
 						</div>
-						<div class="px-1">
-							<p><span>Due:</span><span id="todo-due" class="ml-2">${todo.dueDate}</span></p>
+						<div class="d-flex justify-content-between">
+							<div class="px-1">
+								<p class="my-1"><span>Status:</span><span id="todo-status" class="ml-2">${todo.completedStatus}</span></p>
+							</div>
 						</div>
 					</div>
-					<div class="d-flex justify-content-between">
-						<p class="px-1">Description:</p>
-						<div class="px-1">
-							<p><span>Status:</span><span id="todo-status" class="ml-2">${todo.completedStatus}</span></p>
-						</div>
+					<hr class="p-0 mt-0 mb-1">
+					<div class="px-1 mt-3 text-left">
+						<p class="p-0 my-1">Description:</p>
+						<p id="todo-description" class="p-0 my-1">
+							${todo.description}
+						</p>
 					</div>
-				</div>
-				<div class="px-1">
-					<p id="todo-description">
-						Dummy Description
-					</p>
 				</div>
 			</div>
 			`;
