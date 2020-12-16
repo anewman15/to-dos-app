@@ -59,7 +59,9 @@ const updateProjectContentContainer = (projectsArray, projectIndex) => {
     <div id="project-content-top" class="mx-auto">
       <h1 class="h2 font-weight-bold my-3 text-center">${projectsArray[projectIndex].title}</h1>
       <button id="create-new-todo-button" class="btn btn-primary my-3" data-project-idx="${projectIndex}" data-toggle="modal" data-target="#createTodoModal">Create New Todo</button>
-    </div>
+		</div>
+		<div id="project-list-container">
+		</div>
   `;
 	projectContentContainer.appendChild(projectContent);
 }
@@ -82,20 +84,21 @@ const createDefaultTodo = (projectsArray) => {
 }
 
 const displayProjectTodoList = () => {
-	const projectContent = document.getElementById('project-content');
-	const projectTodosContainer = document.createElement('div');
-	projectTodosContainer.id = 'project-todos-container';
-	projectTodosContainer.classList.add('container', 'col', 'mx-auto', 'mt-5');
+	const projectListContainer = document.getElementById('project-list-container');
+	projectListContainer.innerHTML = '';
+	const projectTodosList = document.createElement('div');
+	projectTodosList.id = 'project-todos-list';
+	projectTodosList.classList.add('container', 'col', 'mx-auto', 'mt-5');
 	const projectsArray = Storage.getProjects();
 	const { projectIdx } = document.getElementById('create-new-todo-button').dataset;
-	projectTodosContainer.innerHTML = `
+	projectTodosList.innerHTML = `
 		<h1 class="h3 m-0 text-center">Todos:</h1>
 		<hr class="p-0">
 	`;
 	const projectTodos = projectsArray[projectIdx].todos;
 	if (projectTodos) {
 		projectTodos.forEach(todo => {
-			projectTodosContainer.innerHTML += `
+			projectTodosList.innerHTML += `
 			<div class="row mx-auto text-white">
 				<div class="col bg-info mx-auto my-4 p-3 rounded">
 					<div class="px-1">
@@ -129,7 +132,7 @@ const displayProjectTodoList = () => {
 			`;
 		});
 	}
-	projectContent.appendChild(projectTodosContainer);
+	projectListContainer.appendChild(projectTodosList);
 };
 
 export const addTodoListToProject = () => {
