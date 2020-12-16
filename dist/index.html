@@ -42,7 +42,7 @@
   </section>
 
   <section class="modal fade" id="createTodoModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title font-weight-bolder" id="createTodoModal">Create New Todo</h5>
@@ -63,7 +63,20 @@
               </div>
               <div class="form-group">
                 <label for="todo-form-priority">Priority</label>
-                <input class="form-control" id="todo-form-priority" placeholder="Set priority, e.g. Urgent, High, Medium, Low" type="text" required>
+                <select class="form-control" id="todo-form-priority" name="todo-form-priority" required>
+                  <option value="urgent">Urgent</option>
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="todo-form-priority">Status</label>
+                <select class="form-control" id="todo-form-priority" name="todo-form-priority" required>
+                  <option value="not-started">Not Started</option>
+                  <option value="working">Working</option>
+                  <option value="Completed">Completed</option>
+                </select>
               </div>
               <div class="form-group">
                 <label for="todo-form-description">Description</label>
