@@ -7,16 +7,15 @@ export default class Todo {
 
 	#priority;
 
+	#status;
+
 	#description;
 
-	#checklist = [];
-
-	#completedStatus = false;
-
-	constructor(title, dueDate, priority, description) {
+	constructor(title, dueDate, priority, status, description) {
 		this.#title = title;
 		this.#dueDate = dueDate;
 		this.#priority = priority;
+		this.#status = status;
 		this.#description = description;
 	}
 
@@ -44,27 +43,11 @@ export default class Todo {
 		this.#priority = _value;
 	}
 
+	get status() {
+		return this.#status;
+	}
+
 	get description() {
 		return this.#description;
-	}
-
-	get checklist() {
-		return this.#checklist;
-	}
-
-	set checklist(_value) {
-		this.checklist = _value;
-	}
-
-	get completedStatus() {
-		return this.#completedStatus;
-	}
-
-	changeCompletedStatus() {
-		if (this.#completedStatus) {
-			this.#completedStatus = false;
-		} else {
-			this.#completedStatus = true;
-		}
 	}
 }
