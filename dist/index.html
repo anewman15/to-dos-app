@@ -13,19 +13,37 @@
 
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a id="create-new-project-button" class="btn btn-primary" href="#">Create New Project<span class="sr-only">(current)</span></a>
+        <a id="create-new-project-button" class="btn btn-primary" data-toggle="modal" data-target="#createProjectModal">Create New Project<span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </nav>
-  <section id="project-form-wrapper" class="w-50 mx-auto my-4 p-4 bg-light border rounded d-none">
-    <form action="../src/js/index.js" id="project-form">
-      <div class="form-group">
-        <label for="project-form-title">Project Title</label>
-        <input id="project-form-title" class="form-control" type="text" name="project-form-title" placeholder="Title of your Project" required>
+  <section class="modal fade" id="createProjectModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title font-weight-bolder" id="createProjectModal">Create New Project</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="project-form-wrapper" class="mx-auto my-4 p-4 bg-light border rounded">
+            <form action="../src/js/index.js" id="project-form">
+              <div class="form-group">
+                <label for="project-form-title">Project Title</label>
+                <input id="project-form-title" class="form-control" type="text" name="project-form-title" placeholder="Title of your Project" required>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" id="project-form-button" class="btn btn-success">Create Project</button>
+        </div>
       </div>
-      <button type="submit" class="btn btn-success">Create Project</button>
-    </form>
+    </div>
   </section>
+
+
   <section id="todo-form-wrapper" class="w-50 mx-auto my-4 p-4 bg-light border rounded d-none">
     <form action="" id="todo-form">
       <div class="form-group">
