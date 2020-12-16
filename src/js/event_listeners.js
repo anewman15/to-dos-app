@@ -12,13 +12,11 @@ const createNewProjectButtonEventListener = () => {
 };
 
 const projectFormEventListener = () => {
-	const projectForm = document.getElementById('project-form');
-	const projectFormWrapper = document.getElementById('project-form-wrapper');
-	projectForm.addEventListener('submit', (e) => {
+	const projectFormButton = document.getElementById('project-form');
+	projectFormButton.addEventListener('submit', (e) => {
 		e.preventDefault();
 		DomModule.addNewProject();
-		projectForm.reset();
-		projectFormWrapper.classList.add('d-none');
+		projectFormButton.reset();
 	});
 };
 
