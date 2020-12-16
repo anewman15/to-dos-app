@@ -26,12 +26,6 @@ export const displayProjectList = () => {
 	projectsPanel.appendChild(projectList);
 };
 
-export const addDefaultProject = () => {
-	const newProject = new Project('Fire is Calling You...');
-	newProject.addProjectToStorage();
-	displayProjectList();
-};
-
 export const addNewProject = () => {
 	createNewProject();
 	displayProjectList();
@@ -67,20 +61,16 @@ const updateProjectContentContainer = (projectsArray, projectIndex) => {
 }
 
 export const createNewTodo = () => {
-	const todoFormTitle = document.getElementById('todo-form-title').value;
-	const todoFormDueDate = document.getElementById('todo-form-due-date').value;
-	const todoFormPriority = document.getElementById('todo-form-priority').value;
-	const todoFormDescription = document.getElementById('todo-form-description').value;
-	const newTodo = new Todo(todoFormTitle, todoFormDueDate, todoFormPriority, todoFormDescription);
+	const todoCreateTitle = document.getElementById('todo-create-title').value;
+	const todoCreateDueDate = document.getElementById('todo-create-due-date').value;
+	const todoCreatePriority = document.getElementById('todo-create-priority').value;
+	const todoCreateStatus = document.getElementById('todo-create-description').value;
+	const todoCreateDescription = document.getElementById('todo-create-description').value;
+	const newTodo = new Todo(todoCreateTitle, todoCreateDueDate,
+		todoCreatePriority, todoCreateStatus, todoCreateDescription);
 	console.log(newTodo.title);
 	const { projectIdx } = document.getElementById('create-new-todo-button').dataset;
 	newTodo.addTodoToProject(projectIdx);
-}
-
-const createDefaultTodo = (projectsArray) => {
-	const todoFormDescription = 'Create a New Todo under Default Project or Create a New Project and add a Todo there'
-	const defaultTodo = new Todo('Default Todo', 'Now', 'Immediate', todoFormDescription);
-	defaultTodo.addTodoToProject(projectsArray[0]);
 }
 
 const displayProjectTodoList = () => {

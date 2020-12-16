@@ -2,7 +2,20 @@ const initiateProjectsStore = () => {
 	if (localStorage.projects) {
 		return;
 	} else {
-		const projectsArray = [{ title: 'Fire is Calling You...', todos: [] }];
+		const projectsArray = [
+			{
+				title: 'Fire is Calling You...',
+				todos: [
+					{
+						title: 'Create a Todo',
+						dueDate: new Date(),
+						priority: 'Urgent',
+						status: 'Working',
+						description: 'Create a new Todo here or create a new Project and then add Todos there. Good Luck!'
+					}
+				]
+			}
+		];
 		localStorage.setItem('projects', JSON.stringify(projectsArray));
 	}
 }
@@ -25,8 +38,8 @@ const addTodo = (newTodo, projectIndex) => {
 		title: newTodo.title,
 		dueDate: newTodo.dueDate,
 		priority: newTodo.priority,
+		status: newTodo.status,
 		description: newTodo.description,
-		completedStatus: newTodo.completedStatus
 	};
 	storedProjects[projectIndex].todos.push(todoLiteral);
 	const updatedStoredProjects = JSON.stringify(storedProjects);

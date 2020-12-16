@@ -32,12 +32,12 @@ const projectLinkEventListener = () => {
 };
 
 const todoFormEventListener = () => {
-  const todoForm = document.getElementById('todo-form');
-  todoForm.addEventListener('submit', (e) => {
+  const todoCreateForm = document.getElementById('todo-create');
+  todoCreateForm.addEventListener('submit', (e) => {
     e.preventDefault();
     DomModule.addTodoListToProject();
     console.log('Submitted');
-    todoForm.reset();
+    todoCreateForm.reset();
   });
 }
 
