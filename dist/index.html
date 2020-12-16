@@ -42,26 +42,40 @@
   </section>
 
 
-  <section id="todo-form-wrapper" class="w-50 mx-auto my-4 p-4 bg-light border rounded d-none">
-    <form action="" id="todo-form">
-      <div class="form-group">
-        <label for="todo-form-title">Todo Title</label>
-        <input class="form-control" id="todo-form-title" placeholder="Add a Title" type="text" required>
+  <section class="modal fade" id="createTodoModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title font-weight-bolder" id="createTodoModal">Create New Todo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="todo-form-wrapper" class="my-4 p-4 bg-light border rounded">
+            <form action="" id="todo-form">
+              <div class="form-group">
+                <label for="todo-form-title">Todo Title</label>
+                <input class="form-control" id="todo-form-title" placeholder="Add a Title" type="text" required>
+              </div>
+              <div class="form-group">
+                <label for="todo-form-due-date">Due Date</label>
+                <input class="form-control" id="todo-form-due-date" type="datetime-local" required>
+              </div>
+              <div class="form-group">
+                <label for="todo-form-priority">Priority</label>
+                <input class="form-control" id="todo-form-priority" placeholder="Set priority, e.g. Urgent, High, Medium, Low" type="text" required>
+              </div>
+              <div class="form-group">
+                <label for="todo-form-description">Description</label>
+                <textarea class="form-control" id="todo-form-description" placeholder="Briefly describe your Todo..." type="text" required></textarea>
+              </div>
+              <button class="btn btn-success mt-3" type="submit">Create Todo</button>
+            </form>
+          </sectdivion>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="todo-form-due-date">Due Date</label>
-        <input class="form-control" id="todo-form-due-date" type="datetime-local" required>
-      </div>
-      <div class="form-group">
-        <label for="todo-form-priority">Priority</label>
-        <input class="form-control" id="todo-form-priority" placeholder="Set priority, e.g. Urgent, High, Medium, Low" type="text" required>
-      </div>
-      <div class="form-group">
-        <label for="todo-form-description">Description</label>
-        <textarea class="form-control" id="todo-form-description" placeholder="Briefly describe your Todo..." type="text" required></textarea>
-      </div>
-      <button class="btn btn-success mt-3" type="submit">Create Todo</button>
-    </form>
+    </div>
   </section>
 
   <section id="content-area" class="container-fluid row mx-auto">

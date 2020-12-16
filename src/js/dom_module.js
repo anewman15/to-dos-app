@@ -58,7 +58,7 @@ const updateProjectContentContainer = (projectsArray, projectIndex) => {
 	projectContent.innerHTML = `
     <div id="project-content-top" class="mx-auto">
       <h1 class="h2 font-weight-bold my-3 text-center">${projectsArray[projectIndex].title}</h1>
-      <button id="create-new-todo-button" class="btn btn-primary my-3" data-project-idx="${projectIndex}">Create New Todo</button>
+      <button id="create-new-todo-button" class="btn btn-primary my-3" data-project-idx="${projectIndex}" data-toggle="modal" data-target="#createTodoModal">Create New Todo</button>
     </div>
   `;
 	projectContentContainer.appendChild(projectContent);
