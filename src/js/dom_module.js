@@ -185,17 +185,11 @@ export const updateCurrentTodo = () => {
 	const todoChangedStatus = document.getElementById('todo-edit-status').value;
 	const todoChangedDescription = document.getElementById('todo-edit-description').value;
 	const todoIndex = document.getElementById('todo-edit-button').dataset.todoIdx;
-
-	const projectsArray = Storage.getProjects();
 	const { projectIdx } = document.getElementById('create-new-todo-button').dataset;
-	const currentProject = projectsArray[projectIdx];
-	const currentTodo = currentProject.todos[todoIndex];
 
-	const updatedTodo = {
-		title: todoChangedTitle,
-		dueDate: todoChangedDueDate,
-		priority: todoChangedPriority,
-		status: todoChangedStatus,
-		description: todoChangedDescription,
-	}
+	const updatedTodo = new Todo(todoChangedTitle, todoChangedDueDate, todoChangedPriority,
+		todoChangedStatus, todoChangedDescription);
+	updatedTodo.addUpdatedTodoToProject(projectIdx, todoIndex);
+	console.log('Updated');
+	displayProjectTodoList();
 }

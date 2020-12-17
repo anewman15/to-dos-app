@@ -44,6 +44,20 @@ const addTodo = (newTodo, projectIndex) => {
 	storedProjects[projectIndex].todos.push(todoLiteral);
 	const updatedStoredProjects = JSON.stringify(storedProjects);
 	localStorage.setItem('projects', updatedStoredProjects);
-}
+};
 
-export { initiateProjectsStore, getProjects, addProject, addTodo };
+const updateTodo = (updatedTodo, projectIndex, todoIndex) =>  {
+	const storedProjects = getProjects();
+	const updatedTodoLiteral = {
+		title: updatedTodo.title,
+		dueDate: updatedTodo.dueDate,
+		priority: updatedTodo.priority,
+		status: updatedTodo.status,
+		description: updatedTodo.description,
+	};
+	storedProjects[projectIndex].todos[todoIndex] = updatedTodoLiteral;
+	const updatedStoredProjects = JSON.stringify(storedProjects);
+	localStorage.setItem('projects', updatedStoredProjects);
+};
+
+export { initiateProjectsStore, getProjects, addProject, addTodo, updateTodo };

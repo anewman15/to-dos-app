@@ -23,6 +23,10 @@ export default class Todo {
 		Storage.addTodo(this, projectIndex);
 	}
 
+	addUpdatedTodoToProject(projectIndex, todoIndex) {
+		Storage.updateTodo(this, projectIndex, todoIndex);
+	}
+
 	get title() {
 		return this.#title;
 	}
