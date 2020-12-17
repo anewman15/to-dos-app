@@ -1,7 +1,7 @@
 import Project from './Project';
 import Todo from './Todo';
 import * as Storage from './storage';
-import { editTodoButtonEventListener, todoDeleteEventListener } from './event_listeners';
+import { editTodoButtonEventListener, todoDeleteEventListener, projectDeleteEventListener } from './event_listeners';
 
 const createNewProject = () => {
 	const projectTitle = document.getElementById('project-form-title').value;
@@ -43,7 +43,7 @@ const resetProjectContentContainer = () => {
 		projectContentContainer.classList = 'col-md p-3 bg-light my-4 text-center';
 		contentArea.appendChild(projectContentContainer);
 	}
-}
+};
 
 const updateProjectContentContainer = (projectsArray, projectIndex) => {
 	const projectContentContainer = document.getElementById('project-content-container');
@@ -65,7 +65,8 @@ const updateProjectContentContainer = (projectsArray, projectIndex) => {
 		</div>
   `;
 	projectContentContainer.appendChild(projectContent);
-}
+	projectDeleteEventListener();
+};
 
 export const createNewTodo = () => {
 	const todoCreateTitle = document.getElementById('todo-create-title').value;
@@ -77,7 +78,7 @@ export const createNewTodo = () => {
 		todoCreatePriority, todoCreateStatus, todoCreateDescription);
 	const { projectIdx } = document.getElementById('create-new-todo-button').dataset;
 	newTodo.addTodoToProject(projectIdx);
-}
+};
 
 const displayProjectTodoList = () => {
 	const projectListContainer = document.getElementById('project-list-container');
@@ -197,4 +198,10 @@ export const deleteCurrentTodo = (todoIndex) => {
 	const { projectIdx } = document.getElementById('create-new-todo-button').dataset;
 	Storage.deleteTodo(projectIdx, todoIndex);
 	displayProjectTodoList();
+};
+
+export const deleteCurrentProject = () => {
+	const { projectIdx } = document.getElementById('create-new-todo-button').dataset;
+	Storage.deleteProject(projectIdx);
+	displayProjectList();
 };

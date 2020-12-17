@@ -66,6 +66,15 @@ const deleteTodo = (projectIndex, todoIndex) => {
 	currentProject.todos.splice(todoIndex, 1);
 	const updatedStoredProjects = JSON.stringify(storedProjects);
 	localStorage.setItem('projects', updatedStoredProjects);
-}
+};
 
-export { initiateProjectsStore, getProjects, addProject, addTodo, updateTodo, deleteTodo };
+const deleteProject = (projectIndex) => {
+	const storedProjects = getProjects();
+	storedProjects.splice(projectIndex, 1);
+	const updatedStoredProjects = JSON.stringify(storedProjects);
+	localStorage.setItem('projects', updatedStoredProjects);
+};
+
+export { initiateProjectsStore, getProjects, addProject,
+	addTodo, updateTodo, deleteTodo, deleteProject
+};

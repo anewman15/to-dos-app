@@ -49,6 +49,7 @@ const todoSaveChangesEventListener = () => {
 		if (confirmChanges) {
 			DomModule.updateCurrentTodo();
 			window.alert('Changes saved successfully!');
+			todoEditForm.reset();
 		}
 	});
 };
@@ -66,6 +67,16 @@ const todoDeleteEventListener = () => {
 	});
 };
 
+const projectDeleteEventListener = () => {
+	const deleteProjectButton = document.getElementById('delete-project-button');
+	deleteProjectButton.addEventListener('click', () => {
+		const confirmDelete = window.confirm('You are about to delete this project with all its Todos. Are you sure about this?');
+		if (confirmDelete) {
+			DomModule.deleteCurrentProject();
+		}
+	});
+};
+
 export {
 	projectFormEventListener,
 	projectLinkEventListener,
@@ -73,4 +84,5 @@ export {
 	editTodoButtonEventListener,
 	todoSaveChangesEventListener,
 	todoDeleteEventListener,
+	projectDeleteEventListener,
 };
