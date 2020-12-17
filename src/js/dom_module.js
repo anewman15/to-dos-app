@@ -1,4 +1,4 @@
-import { parseISO, format, formatDistanceToNow } from 'date-fns';
+import { parseISO, format, formatDistanceToNow, isFuture } from 'date-fns';
 import Project from './Project';
 import Todo from './Todo';
 import * as Storage from './storage';
@@ -99,7 +99,7 @@ const displayProjectTodoList = () => {
 		projectTodos.forEach((todo, index) => {
 			const todoDueDate = new Date(parseISO(todo.dueDate));
 			const formattedDueDate = format(todoDueDate, 'MMM dd, yyyy - EEE HH:mm');
-			const timeLeft = formatDistanceToNow(todoDueDate);
+			const timeLeft = isFuture(todoDueDate) ? formatDistanceToNow(todoDueDate) : 'Deadline Passed';
 			projectTodosList.innerHTML += `
 			<div class="row mx-auto text-white">
 				<div class="col bg-info mx-auto my-4 p-3 rounded">
