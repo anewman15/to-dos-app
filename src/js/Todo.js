@@ -35,6 +35,10 @@ export default class Todo {
 		return this.#dueDate;
 	}
 
+	set dueDate(_value) {
+		this.#dueDate = _value;
+	}
+
 	get priority() {
 		return this.#priority;
 	}
@@ -47,7 +51,15 @@ export default class Todo {
 		return this.#status;
 	}
 
+	set status(_value) {
+		this.#status = _value;
+	}
+
 	get description() {
 		return this.#description;
+	}
+
+	set description(_value) {
+		this.#description = _value;
 	}
 }

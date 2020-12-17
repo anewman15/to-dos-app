@@ -1,7 +1,7 @@
 import Project from './Project';
 import Todo from './Todo';
 import * as Storage from './storage';
-import * as EventListeners from './event_listeners';
+import { editTodoButtonEventListener } from './event_listeners';
 
 const createNewProject = () => {
 	const projectTitle = document.getElementById('project-form-title').value;
@@ -70,12 +70,11 @@ const updateProjectContentContainer = (projectsArray, projectIndex) => {
 export const createNewTodo = () => {
 	const todoCreateTitle = document.getElementById('todo-create-title').value;
 	const todoCreateDueDate = document.getElementById('todo-create-due-date').value;
-	const todoCreatePriority = document.getElementById('todo-create-priority').value;
-	const todoCreateStatus = document.getElementById('todo-create-status').value;
+	const todoCreatePriority = document.getElementById('todo-create-priority').selected;
+	const todoCreateStatus = document.getElementById('todo-create-status').selected;
 	const todoCreateDescription = document.getElementById('todo-create-description').value;
 	const newTodo = new Todo(todoCreateTitle, todoCreateDueDate,
 		todoCreatePriority, todoCreateStatus, todoCreateDescription);
-	console.log(newTodo.title);
 	const { projectIdx } = document.getElementById('create-new-todo-button').dataset;
 	newTodo.addTodoToProject(projectIdx);
 }
@@ -145,7 +144,7 @@ const displayProjectTodoList = () => {
 		});
 	}
 	projectListContainer.appendChild(projectTodosList);
-	EventListeners.editTodoButtonEventListener();
+	editTodoButtonEventListener();
 };
 
 export const addTodoListToProject = () => {
@@ -175,20 +174,28 @@ export const setTodoEditFormValues = (todoIndex) => {
 	todoEditStatus.selected = currentTodo.status;
 	const todoEditDescription = document.getElementById('todo-edit-description');
 	todoEditDescription.value = currentTodo.description;
+	const todoEditButton = document.getElementById('todo-edit-button');
+	todoEditButton.dataset.todoIdx = todoIndex;
 }
 
-export const updateTodo = (project, todoIndex) => {
+export const updateCurrentTodo = () => {
 	const todoChangedTitle = document.getElementById('todo-edit-title').value;
 	const todoChangedDueDate = document.getElementById('todo-edit-due-date').value;
 	const todoChangedPriority = document.getElementById('todo-edit-priority').value;
 	const todoChangedStatus = document.getElementById('todo-edit-status').value;
-	const todoChangedDescription = document.getElementById('todo-edit-description');
+	const todoChangedDescription = document.getElementById('todo-edit-description').value;
+	const todoIndex = document.getElementById('todo-edit-button').dataset.todoIdx;
 
-	const currentTodo = project.todos[todoIndex];
+	const projectsArray = Storage.getProjects();
+	const { projectIdx } = document.getElementById('create-new-todo-button').dataset;
+	const currentProject = projectsArray[projectIdx];
+	const currentTodo = currentProject.todos[todoIndex];
 
-	currentTodo.title = todoChangedTitle;
-	currentTodo.dueDate = todoChangedDueDate;
-	currentTodo.priority = todoChangedPriority;
-	currentTodo.status = todoChangedStatus;
-	currentTodo.description = todoChangedDescription;
+	const updatedTodo = {
+		title: todoChangedTitle,
+		dueDate: todoChangedDueDate,
+		priority: todoChangedPriority,
+		status: todoChangedStatus,
+		description: todoChangedDescription,
+	}
 }

@@ -8,4 +8,4 @@ DomModule.displayProjectList();
 EventListeners.projectFormEventListener();
 EventListeners.projectLinkEventListener();
 EventListeners.todoCreateEventListener();
-// EventListeners.editTodoButtonEventListener();
+EventListeners.todoSaveChangesEventListener();

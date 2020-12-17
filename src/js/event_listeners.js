@@ -34,7 +34,17 @@ const editTodoButtonEventListener = () => {
 	const projectTodosList = document.getElementById('project-todos-list');
 	projectTodosList.addEventListener('click', (e) => {
 		const currentTodoIndex = e.target.dataset.todoEditIdx;
-		DomModule.setTodoEditFormValues(currentTodoIndex);
+		if (currentTodoIndex) {
+			DomModule.setTodoEditFormValues(currentTodoIndex);
+		}
+	});
+};
+
+const todoSaveChangesEventListener = () => {
+	const todoEditForm = document.getElementById('todo-edit');
+	todoEditForm.addEventListener('submit', (e) => {
+		e.preventDefault();
+		DomModule.updateCurrentTodo();
 	});
 };
 
@@ -43,4 +53,5 @@ export {
 	projectLinkEventListener,
 	todoCreateEventListener,
 	editTodoButtonEventListener,
+	todoSaveChangesEventListener,
 };
