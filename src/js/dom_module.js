@@ -1,3 +1,4 @@
+import { parseISO, format, formatDistanceToNow } from 'date-fns';
 import Project from './Project';
 import Todo from './Todo';
 import * as Storage from './storage';
@@ -96,6 +97,9 @@ const displayProjectTodoList = () => {
 	`;
 	if (projectTodos) {
 		projectTodos.forEach((todo, index) => {
+			const todoDueDate = new Date(parseISO(todo.dueDate));
+			const formattedDueDate = format(todoDueDate, 'MMM dd, yyyy - EEE HH:mm');
+			const timeLeft = formatDistanceToNow(todoDueDate);
 			projectTodosList.innerHTML += `
 			<div class="row mx-auto text-white">
 				<div class="col bg-info mx-auto my-4 p-3 rounded">
@@ -106,18 +110,27 @@ const displayProjectTodoList = () => {
 					<div class="todo-info">
 						<div class="d-flex justify-content-between">
 							<div class="px-1">
-								<p class="my-1 text-left"><span class="font-weight-bold">Status:</span><span id="todo-status" class="ml-2">${todo.status}</span></p>
+								<p class="my-1 text-left">
+									<span class="font-weight-bold">Status:</span>
+									<span id="todo-status" class="ml-2">${todo.status}</span>
+								</p>
 							</div>
 							<div class="px-1">
-								<p class="my-1 text-right"><span class="font-weight-bold">Priority:</span><span id="todo-priority" class="ml-2">${todo.priority}</span></p>
+								<p class="my-1 text-right">
+									<span class="font-weight-bold">Priority:</span>
+									<span id="todo-priority" class="ml-2">${todo.priority}</span>
+								</p>
 							</div>
 						</div>
 						<div class="d-flex justify-content-between">
 							<div class="px-1">
-								<p class="m-0 text-left"><span class="font-weight-bold">Due:</span><span id="todo-due" class="ml-2">${todo.dueDate}</span></p>
+								<p class="m-0 text-left">
+									<span class="font-weight-bold">Due:</span>
+									<span id="todo-due" class="ml-2">${formattedDueDate}</span>
+								</p>
 							</div>
 							<div class="px-1">
-								<p class="m-0 text-right"><span class="font-weight-bold">Time Left:</span><span id="time-left" class="ml-2">${todo.dueDate}</span></p>
+								<p class="m-0 text-right"><span class="font-weight-bold">Time Left:</span><span id="time-left" class="ml-2">${timeLeft}</span></p>
 							</div>
 						</div>
 					</div>
