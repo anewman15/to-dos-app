@@ -1,4 +1,4 @@
-# Restaurant Page - Yumz Chick'n
+# Todos App
 This is a dynamically generated Todos App using JS and Webpack. It allows the user to create and delete projects and todos. Todos can be edited afterwards. Each project shows the todos contained in it and individual todos are listed with their title, due date, time left before deadline, priority and description. Forms are presented in Bootstrap modals.
 
 Undeleted projects and todos are persisted using the browser's localStorage, when you open the app in the same browser, all your projects and todos remain available indefinitely.
