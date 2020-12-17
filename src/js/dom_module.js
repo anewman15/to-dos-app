@@ -70,8 +70,8 @@ const updateProjectContentContainer = (projectsArray, projectIndex) => {
 export const createNewTodo = () => {
 	const todoCreateTitle = document.getElementById('todo-create-title').value;
 	const todoCreateDueDate = document.getElementById('todo-create-due-date').value;
-	const todoCreatePriority = document.getElementById('todo-create-priority').selected;
-	const todoCreateStatus = document.getElementById('todo-create-status').selected;
+	const todoCreatePriority = document.getElementById('todo-create-priority').value;
+	const todoCreateStatus = document.getElementById('todo-create-status').value;
 	const todoCreateDescription = document.getElementById('todo-create-description').value;
 	const newTodo = new Todo(todoCreateTitle, todoCreateDueDate,
 		todoCreatePriority, todoCreateStatus, todoCreateDescription);
