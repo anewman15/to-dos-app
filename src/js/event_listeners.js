@@ -7,6 +7,7 @@ const projectFormEventListener = () => {
 		e.preventDefault();
 		DomModule.addNewProject();
 		projectFormButton.reset();
+		location.reload();
 	});
 };
 
@@ -70,9 +71,10 @@ const todoDeleteEventListener = () => {
 const projectDeleteEventListener = () => {
 	const deleteProjectButton = document.getElementById('delete-project-button');
 	deleteProjectButton.addEventListener('click', () => {
-		const confirmDelete = window.confirm('You are about to delete this project with all its Todos. Are you sure about this?');
+		const confirmDelete = window.confirm('Delete this project with all its todos... Are you sure?');
 		if (confirmDelete) {
 			DomModule.deleteCurrentProject();
+			location.reload();
 		}
 	});
 };
