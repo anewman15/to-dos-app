@@ -1,7 +1,7 @@
 import Project from './Project';
 import Todo from './Todo';
 import * as Storage from './storage';
-import { editTodoButtonEventListener } from './event_listeners';
+import { editTodoButtonEventListener, todoDeleteEventListener } from './event_listeners';
 
 const createNewProject = () => {
 	const projectTitle = document.getElementById('project-form-title').value;
@@ -133,8 +133,7 @@ const displayProjectTodoList = () => {
 							data-toggle="modal" data-target="#editTodoModal">
 							Edit Todo
 						</button>
-						<button class="delete-todo-button btn btn-danger my-3 font-weight-bold" data-todo-delete-idx="${index}"
-							data-toggle="modal" data-target="#createTodoModal">
+						<button class="delete-todo-button btn btn-danger my-3 font-weight-bold" data-todo-delete-idx="${index}">
 							Delete Todo
 						</button>
 				</div>
@@ -145,6 +144,7 @@ const displayProjectTodoList = () => {
 	}
 	projectListContainer.appendChild(projectTodosList);
 	editTodoButtonEventListener();
+	todoDeleteEventListener();
 };
 
 export const addTodoListToProject = () => {
@@ -156,7 +156,7 @@ export const displayProjectContent = (projectsArray, projectIndex) => {
 	resetProjectContentContainer();
 	updateProjectContentContainer(projectsArray, projectIndex);
 	displayProjectTodoList();
-}
+};
 
 export const setTodoEditFormValues = (todoIndex) => {
 	const projectsArray = Storage.getProjects();
@@ -176,7 +176,7 @@ export const setTodoEditFormValues = (todoIndex) => {
 	todoEditDescription.value = currentTodo.description;
 	const todoEditButton = document.getElementById('todo-edit-button');
 	todoEditButton.dataset.todoIdx = todoIndex;
-}
+};
 
 export const updateCurrentTodo = () => {
 	const todoChangedTitle = document.getElementById('todo-edit-title').value;
@@ -190,6 +190,11 @@ export const updateCurrentTodo = () => {
 	const updatedTodo = new Todo(todoChangedTitle, todoChangedDueDate, todoChangedPriority,
 		todoChangedStatus, todoChangedDescription);
 	updatedTodo.addUpdatedTodoToProject(projectIdx, todoIndex);
-	console.log('Updated');
 	displayProjectTodoList();
-}
+};
+
+export const deleteCurrentTodo = (todoIndex) => {
+	const { projectIdx } = document.getElementById('create-new-todo-button').dataset;
+	Storage.deleteTodo(projectIdx, todoIndex);
+	displayProjectTodoList();
+};

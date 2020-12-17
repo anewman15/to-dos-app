@@ -48,10 +48,22 @@ const todoSaveChangesEventListener = () => {
 	});
 };
 
+const todoDeleteEventListener = () => {
+	const projectTodosList = document.getElementById('project-todos-list');
+	projectTodosList.addEventListener('click', (e) => {
+		const currentTodoIndex = e.target.dataset.todoDeleteIdx;
+		const confirmDelete = window.confirm('Are you sure you want to delete this Todo?');
+		if (currentTodoIndex && confirmDelete) {
+			DomModule.deleteCurrentTodo(currentTodoIndex);
+		}
+	});
+}
+
 export {
 	projectFormEventListener,
 	projectLinkEventListener,
 	todoCreateEventListener,
 	editTodoButtonEventListener,
 	todoSaveChangesEventListener,
+	todoDeleteEventListener,
 };
