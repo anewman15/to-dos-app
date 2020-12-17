@@ -1,4 +1,5 @@
 import * as Storage from './storage';
+
 export default class Project {
 	#title;
 
