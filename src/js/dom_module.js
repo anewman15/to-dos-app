@@ -91,7 +91,7 @@ const displayProjectTodoList = () => {
 	const currentProject = projectsArray[projectIdx];
 	const projectTodos = currentProject.todos;
 	projectTodosList.innerHTML = `
-		<h1 class="h3 m-0 text-center">You have ${projectTodos.length} Todos</h1>
+		<h1 class="h3 m-0 text-center">${projectTodos.length} Todos in this Project</h1>
 		<hr class="p-0">
 	`;
 	if (projectTodos) {

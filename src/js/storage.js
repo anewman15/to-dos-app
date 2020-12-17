@@ -10,8 +10,9 @@ const initiateProjectsStore = () => {
 						title: 'Create a Todo',
 						dueDate: new Date(),
 						priority: 'Urgent',
-						status: 'Working',
-						description: 'Create a new Todo here or create a new Project and then add Todos there. Good Luck!'
+						status: 'Not Started',
+						description: `Create a new Todo here. Or create a new Project and then add
+													Todos there. Don't forget to mark this Todo Complete after that. Good Luck!`
 					}
 				]
 			}
