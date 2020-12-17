@@ -1,6 +1,7 @@
 import Project from './Project';
 import Todo from './Todo';
 import * as Storage from './storage';
+import * as EventListeners from './event_listeners';
 
 const createNewProject = () => {
 	const projectTitle = document.getElementById('project-form-title').value;
@@ -52,7 +53,13 @@ const updateProjectContentContainer = (projectsArray, projectIndex) => {
 	projectContent.innerHTML = `
     <div id="project-content-top" class="mx-auto">
       <h1 class="h2 font-weight-bold my-3 text-center">${projectsArray[projectIndex].title}</h1>
-      <button id="create-new-todo-button" class="btn btn-primary my-3" data-project-idx="${projectIndex}" data-toggle="modal" data-target="#createTodoModal">Create New Todo</button>
+			<button id="delete-project-button" class="btn btn-danger my-3" data-project-idx="${projectIndex}">
+				Delete Project
+			</button>
+			<button id="create-new-todo-button" class="btn btn-primary my-3" data-project-idx="${projectIndex}"
+				data-toggle="modal" data-target="#createTodoModal">
+				Create New Todo
+			</button>
 		</div>
 		<div id="project-list-container">
 		</div>
@@ -138,6 +145,7 @@ const displayProjectTodoList = () => {
 		});
 	}
 	projectListContainer.appendChild(projectTodosList);
+	EventListeners.editTodoButtonEventListener();
 };
 
 export const addTodoListToProject = () => {
@@ -151,20 +159,20 @@ export const displayProjectContent = (projectsArray, projectIndex) => {
 	displayProjectTodoList();
 }
 
-export const setTodoEditFormValues = (project, todoIndex) => {
+export const setTodoEditFormValues = (todoIndex) => {
 	const projectsArray = Storage.getProjects();
 	const { projectIdx } = document.getElementById('create-new-todo-button').dataset;
 	const currentProject = projectsArray[projectIdx];
-	const currentTodo = project.todos[todoIndex];
+	const currentTodo = currentProject.todos[todoIndex];
 
 	const todoEditTitle = document.getElementById('todo-edit-title');
 	todoEditTitle.value = currentTodo.title;
 	const todoEditDueDate = document.getElementById('todo-edit-due-date');
 	todoEditDueDate.value = currentTodo.dueDate;
 	const todoEditPriority = document.getElementById('todo-edit-priority');
-	todoEditPriority.value = currentTodo.priority;
+	todoEditPriority.selected = currentTodo.priority;
 	const todoEditStatus = document.getElementById('todo-edit-status');
-	todoEditStatus.value = currentTodo.status;
+	todoEditStatus.selected = currentTodo.status;
 	const todoEditDescription = document.getElementById('todo-edit-description');
 	todoEditDescription.value = currentTodo.description;
 }

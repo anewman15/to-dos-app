@@ -10,16 +10,6 @@ const projectFormEventListener = () => {
 	});
 };
 
-const createTodoButtonEventListener = () => {
-  const todoFormWrapper = document.getElementById('todo-form-wrapper');
-	const createNewTodoButton = document.getElementById('create-new-todo-button');
-	if (createNewTodoButton) {
-		createNewTodoButton.addEventListener('click', () => {
-			todoFormWrapper.classList.toggle('d-none');
-		});
-	}
-}
-
 const projectLinkEventListener = () => {
 	const projectsPanel = document.getElementById('projects-panel');
 	projectsPanel.addEventListener('click', (e) => {
@@ -32,18 +22,25 @@ const projectLinkEventListener = () => {
 };
 
 const todoCreateEventListener = () => {
-  const todoCreateForm = document.getElementById('todo-create');
-  todoCreateForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    DomModule.addTodoListToProject();
-    console.log('Submitted');
-    todoCreateForm.reset();
-  });
-}
+	const todoCreateForm = document.getElementById('todo-create');
+	todoCreateForm.addEventListener('submit', (e) => {
+		e.preventDefault();
+		DomModule.addTodoListToProject();
+		todoCreateForm.reset();
+	});
+};
+
+const editTodoButtonEventListener = () => {
+	const projectTodosList = document.getElementById('project-todos-list');
+	projectTodosList.addEventListener('click', (e) => {
+		const currentTodoIndex = e.target.dataset.todoEditIdx;
+		DomModule.setTodoEditFormValues(currentTodoIndex);
+	});
+};
 
 export {
 	projectFormEventListener,
 	projectLinkEventListener,
-	createTodoButtonEventListener,
 	todoCreateEventListener,
+	editTodoButtonEventListener,
 };
