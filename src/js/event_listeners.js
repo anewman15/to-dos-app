@@ -44,7 +44,6 @@ const todoSaveChangesEventListener = () => {
 	todoEditForm.addEventListener('submit', (e) => {
 		e.preventDefault();
 		DomModule.updateCurrentTodo();
-		window.alert('Changes saved successfully!');
 		todoEditForm.reset();
 	});
 };
