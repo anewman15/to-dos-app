@@ -26,7 +26,6 @@ const todoCreateEventListener = () => {
 		e.preventDefault();
 		DomModule.addTodoListToProject();
 		todoCreateForm.reset();
-		window.alert('Todo created successfully!');
 	});
 };
 
@@ -44,12 +43,9 @@ const todoSaveChangesEventListener = () => {
 	const todoEditForm = document.getElementById('todo-edit');
 	todoEditForm.addEventListener('submit', (e) => {
 		e.preventDefault();
-		const confirmChanges = window.confirm('Save Changes?');
-		if (confirmChanges) {
-			DomModule.updateCurrentTodo();
-			window.alert('Changes saved successfully!');
-			todoEditForm.reset();
-		}
+		DomModule.updateCurrentTodo();
+		window.alert('Changes saved successfully!');
+		todoEditForm.reset();
 	});
 };
 
@@ -58,10 +54,7 @@ const todoDeleteEventListener = () => {
 	projectTodosList.addEventListener('click', (e) => {
 		const currentTodoIndex = e.target.dataset.todoDeleteIdx;
 		if (currentTodoIndex) {
-			const confirmDelete = window.confirm('Are you sure you want to delete this Todo?');
-			if (confirmDelete) {
-				DomModule.deleteCurrentTodo(currentTodoIndex);
-			}
+			DomModule.deleteCurrentTodo(currentTodoIndex);
 		}
 	});
 };
@@ -69,11 +62,8 @@ const todoDeleteEventListener = () => {
 const projectDeleteEventListener = () => {
 	const deleteProjectButton = document.getElementById('delete-project-button');
 	deleteProjectButton.addEventListener('click', () => {
-		const confirmDelete = window.confirm('Delete this project with all its todos... Are you sure?');
-		if (confirmDelete) {
-			DomModule.deleteCurrentProject();
-			location.reload();
-		}
+		DomModule.deleteCurrentProject();
+		location.reload();
 	});
 };
 
