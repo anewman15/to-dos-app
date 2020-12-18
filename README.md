@@ -16,8 +16,8 @@ Undeleted projects and todos are persisted using the browser's localStorage, whe
 1. Open your Terminal from a folder of your choice and clone [this repo](https://github.com/anewman15/to-dos-app/)
 2. Navigate to the project directory
 3. Run `npm install`
-4. Then run `npm run build`
-5. Open `http://127.0.0.1:5500/dist/index.html` in your browser and navigate around the site.
+4. Then run `npm run start`
+5. Open `http://localhost:8080/dist/index.html` in your browser and navigate around the site.
 6. Create Projects and Todos, edit them and delete them
 
 
