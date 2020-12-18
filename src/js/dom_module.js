@@ -1,4 +1,6 @@
-import { parseISO, format, formatDistanceToNow, isFuture } from 'date-fns';
+import {
+	parseISO, format, formatDistanceToNow, isFuture,
+} from 'date-fns';
 import Project from './Project';
 import Todo from './Todo';
 import * as Storage from './storage';
@@ -18,19 +20,16 @@ export const displayProjectList = () => {
   `;
 	const projectList = document.createElement('ul');
 	projectList.classList.add('list-group');
-	projectsArray.forEach((project, index) => {
-		projectList.innerHTML += `
-		<li class="list-group-item">
-			<a class="project-link btn-link text-left" data-project-idx="${index}">${project.title}</a>
-		</li>
-		`;
-	});
+	if (projectsArray.length > 0) {
+		projectsArray.forEach((project, index) => {
+			projectList.innerHTML += `
+			<li class="list-group-item">
+				<a class="project-link btn-link text-left" data-project-idx="${index}">${project.title}</a>
+			</li>
+			`;
+		});
+	}
 	projectsPanel.appendChild(projectList);
-};
-
-export const addNewProject = () => {
-	createNewProject();
-	displayProjectList();
 };
 
 const resetProjectContentContainer = () => {
@@ -167,9 +166,11 @@ export const addTodoListToProject = () => {
 };
 
 export const displayProjectContent = (projectsArray, projectIndex) => {
-	resetProjectContentContainer();
-	updateProjectContentContainer(projectsArray, projectIndex);
-	displayProjectTodoList();
+	if (projectsArray.length > 0 && projectIndex) {
+		resetProjectContentContainer();
+		updateProjectContentContainer(projectsArray, projectIndex);
+		displayProjectTodoList();
+	}
 };
 
 export const setTodoEditFormValues = (todoIndex) => {
@@ -216,5 +217,10 @@ export const deleteCurrentTodo = (todoIndex) => {
 export const deleteCurrentProject = () => {
 	const { projectIdx } = document.getElementById('create-new-todo-button').dataset;
 	Storage.deleteProject(projectIdx);
+	displayProjectList();
+};
+
+export const addNewProject = () => {
+	createNewProject();
 	displayProjectList();
 };

@@ -16,9 +16,7 @@ const projectLinkEventListener = () => {
 	projectsPanel.addEventListener('click', (e) => {
 		const projectsArray = Storage.getProjects();
 		const projectIndex = e.target.dataset.projectIdx;
-		if (projectIndex) {
-			DomModule.displayProjectContent(projectsArray, projectIndex);
-		}
+		DomModule.displayProjectContent(projectsArray, projectIndex);
 	});
 };
 

@@ -4,7 +4,7 @@ import * as Storage from './storage';
 
 Storage.initiateProjectsStore();
 displayProjectList();
-displayProjectContent(Storage.getProjects(), 0);
+// displayProjectContent(Storage.getProjects(), 0);
 
 EventListeners.projectFormEventListener();
 EventListeners.projectLinkEventListener();
