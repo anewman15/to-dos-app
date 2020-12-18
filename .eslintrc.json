@@ -16,7 +16,10 @@
       "eol-last": "off",
       "arrow-parens": "off",
       "indent": [2, "tab"],
-      "no-tabs": 0
+      "no-tabs": 0,
+      "import/no-cycle": "off",
+      "no-restricted-globals": "off",
+      "no-alert": "off"
     },
     "ignorePatterns": [
       "dist/",
