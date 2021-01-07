@@ -1,16 +1,10 @@
+/*
+  eslint-disable no-underscore-dangle
+*/
+
 import * as Storage from './storage';
 
 export default class Todo {
-	// #title;
-
-	// #dueDate;
-
-	// #priority;
-
-	// #status;
-
-	// #description;
-
 	constructor(title, dueDate, priority, status, description) {
 		this._title = title;
 		this._dueDate = dueDate;
