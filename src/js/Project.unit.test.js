@@ -4,13 +4,13 @@
 
 import Project from './Project';
 
-describe('Todo', () => {
+describe('Project', () => {
 	let newProject;
 	beforeEach(() => {
 		newProject = new Project('Test Project Title');
 	});
 
-	test('creates a new Project', () => {
+	test('allows creating a new Project', () => {
 		expect(newProject instanceof Project).toBe(true);
 		expect(newProject).toEqual({
 			_title: 'Test Project Title',

@@ -11,7 +11,7 @@ describe('Todo', () => {
 		newTodo = new Todo(...args);
 	});
 
-	test('creates a new Todo', () => {
+	test('allows creating a new Todo', () => {
 		expect(newTodo instanceof Todo).toBe(true);
 		expect(newTodo).toEqual({
 			_title: 'Test Todo Title',

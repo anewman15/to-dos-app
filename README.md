@@ -12,6 +12,9 @@ Undeleted projects and todos are persisted using the browser's localStorage, whe
 - HTML
 - Bootstrap
 
+## Live version
+Available [here](https://rawcdn.githack.com/anewman15/to-dos-app/efd8055b4d486517555464870644e9dd75537dc9/dist/index.html)
+
 ## Deployment
 1. Open your Terminal from a folder of your choice and clone [this repo](https://github.com/anewman15/to-dos-app/)
 2. Navigate to the project directory
