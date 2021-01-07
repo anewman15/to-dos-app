@@ -24,6 +24,9 @@ Available [here](https://rawcdn.githack.com/anewman15/to-dos-app/efd8055b4d48651
 6. Create Projects and Todos, edit them and delete them
 
 
+## Testing
+1. Run `npm run test` or `npm run test unit` in the Terminal to run the tests
+
 ## Author
 
 👤 **Abdullah Numan**
