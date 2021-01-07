@@ -1,13 +1,13 @@
+/*
+  eslint-disable no-underscore-dangle
+*/
+
 import * as Storage from './storage';
 
 export default class Project {
-	#title;
-
-	#todos;
-
 	constructor(title) {
-		this.#title = title;
-		this.#todos = [];
+		this._title = title;
+		this._todos = [];
 	}
 
 	addProjectToStorage() {
@@ -15,14 +15,14 @@ export default class Project {
 	}
 
 	get title() {
-		return this.#title;
+		return this._title;
 	}
 
 	get todos() {
-		return this.#todos;
+		return this._todos;
 	}
 
 	removeTodo(index) {
-		this.#todos.splice(index, 1);
+		this._todos.splice(index, 1);
 	}
 }

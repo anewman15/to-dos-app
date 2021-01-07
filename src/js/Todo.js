@@ -1,22 +1,16 @@
+/*
+  eslint-disable no-underscore-dangle
+*/
+
 import * as Storage from './storage';
 
 export default class Todo {
-	#title;
-
-	#dueDate;
-
-	#priority;
-
-	#status;
-
-	#description;
-
 	constructor(title, dueDate, priority, status, description) {
-		this.#title = title;
-		this.#dueDate = dueDate;
-		this.#priority = priority;
-		this.#status = status;
-		this.#description = description;
+		this._title = title;
+		this._dueDate = dueDate;
+		this._priority = priority;
+		this._status = status;
+		this._description = description;
 	}
 
 	addTodoToProject(projectIndex) {
@@ -28,42 +22,42 @@ export default class Todo {
 	}
 
 	get title() {
-		return this.#title;
+		return this._title;
 	}
 
 	set title(_value) {
-		this.#title = _value;
+		this._title = _value;
 	}
 
 	get dueDate() {
-		return this.#dueDate;
+		return this._dueDate;
 	}
 
 	set dueDate(_value) {
-		this.#dueDate = _value;
+		this._dueDate = _value;
 	}
 
 	get priority() {
-		return this.#priority;
+		return this._priority;
 	}
 
 	set priority(_value) {
-		this.#priority = _value;
+		this._priority = _value;
 	}
 
 	get status() {
-		return this.#status;
+		return this._status;
 	}
 
 	set status(_value) {
-		this.#status = _value;
+		this._status = _value;
 	}
 
 	get description() {
-		return this.#description;
+		return this._description;
 	}
 
 	set description(_value) {
-		this.#description = _value;
+		this._description = _value;
 	}
 }
